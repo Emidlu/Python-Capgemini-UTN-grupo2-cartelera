@@ -1,3 +1,27 @@
-h1{
-    color: green;
+
+
+.fa-ticket{
+    color:#ffd564;
+    margin: 0px 20px
+}
+
+
+.buttons-cards{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+
+.btn-compra-card{
+    background-color: #fe505a;
+    color: white;
+}
+
+
+.btn-compra-card:hover {
+    background-color:#fe5059b1;
+    color: white;
+
 }

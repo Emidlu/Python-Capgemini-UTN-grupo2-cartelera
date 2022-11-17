@@ -3,9 +3,11 @@ from django.template import loader
 from django.shortcuts import render
 # from .models import Database
 
-def prueba(request):
-    return render(request, "index.html")
+def home(request):
+    return render(request, "home.html")
 
+def cartelera(request):
+    return render(request, "cartelera.html")
 
 # def pruebaDB(request):
     # db=Database()

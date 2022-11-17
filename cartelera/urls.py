@@ -18,7 +18,8 @@ from django.urls import path
 from cartelera.views import *
 
 urlpatterns = [
-    path('home/', prueba),
+    path('home/', home),
+    path('cartelera/', cartelera),
     # path('pruebadb/', pruebaDB),
     
 ]

@@ -1,3 +1,4 @@
+/* HOME Y HEADER Y FOOTER*/
 
 
 .fa-ticket{
@@ -25,3 +26,84 @@
     color: white;
 
 }
+
+
+.banner-top-image{
+    width: 100%;
+}
+
+#navbarColor01{
+    justify-content: center;
+}
+
+
+.tab-content{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
+
+.circular{
+    border-radius: 50%;
+    width: 39px;
+    height: 39px;
+}
+
+
+
+
+
+
+
+/* CARTELERA */
+
+.movie__images_cartelera{
+    max-width: 232px;
+}
+
+
+.movie__time{
+    color: red;
+}
+
+.movie__title{
+    color: black;
+    display: inline-block;
+    margin-bottom: -6px;
+    max-width: 330px;
+    text-decoration: none;
+    outline: none;
+    font-size: 27px;
+}
+
+/* .movie--preview{
+    margin-top: 40px;
+    margin-bottom: 50px;
+} */
+
+.movie-container-cartelera{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    background-color:#f5f5f5;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: 10px;
+
+}
+
+.container-cartelera{
+    max-width: 1155px;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+

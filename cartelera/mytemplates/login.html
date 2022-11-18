@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block content %} 
+
+<div class="login-header">
+
+
+    <div class="container">
+
+      <section class="vh-60">
+        <div class="container py-5 h-100">
+          <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                class="img-fluid" alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+              <form      >
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="form1Example13" class="form-control form-control-lg" />
+                  <label class="form-label" for="form1Example13">Email</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="form1Example23" class="form-control form-control-lg"  />
+                  <label class="form-label" for="form1Example23">Password</label>
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar sesion</button>
+                <!-- <p *ngIf="cartelInvalid"><strong class="invalidLogin"> Email o contraseña incorrectos </strong></p> -->
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!--Waves Container-->
+    <div>
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div>
+    <!--Waves end-->
+
+  </div>
+
+{% endblock %}

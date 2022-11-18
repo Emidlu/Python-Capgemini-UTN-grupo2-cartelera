@@ -20,6 +20,7 @@ from cartelera.views import *
 urlpatterns = [
     path('home/', home),
     path('cartelera/', cartelera),
+    path('login/', login),
     # path('pruebadb/', pruebaDB),
     
 ]

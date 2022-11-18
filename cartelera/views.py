@@ -9,6 +9,9 @@ def home(request):
 def cartelera(request):
     return render(request, "cartelera.html")
 
+def login(request):
+    return render(request, "login.html")
+
 # def pruebaDB(request):
     # db=Database()
     # info=db.all_users()

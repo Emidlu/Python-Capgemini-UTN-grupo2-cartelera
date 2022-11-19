@@ -21,6 +21,6 @@ urlpatterns = [
     path('home/', home),
     path('cartelera/', cartelera),
     path('login/', login),
-    # path('pruebadb/', pruebaDB),
+    path('admin/agregar/', agregar),
     
 ]

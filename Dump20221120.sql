@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `cartelera` /*!40100 DEFAULT CHARACTER SET utf8mb
 USE `cartelera`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: cartelera
+-- Host: 127.0.0.1    Database: cartelera
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -144,11 +144,11 @@ CREATE TABLE `peliculas` (
   `calificacion` varchar(45) NOT NULL,
   `idioma` tinyint(1) NOT NULL,
   `generos_id_generos` int NOT NULL,
-  `imagen_link` varchar(100) NOT NULL,
+  `imagen_link` varchar(250) NOT NULL,
   PRIMARY KEY (`id_peliculas`),
   KEY `fk_peliculas_generos1_idx` (`generos_id_generos`),
   CONSTRAINT `fk_peliculas_generos1` FOREIGN KEY (`generos_id_generos`) REFERENCES `generos` (`id_generos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-18 17:54:42
+-- Dump completed on 2022-11-20 23:56:38

@@ -5,47 +5,49 @@
 
 <section class="form-movie-section">
     <div class="container form-movie-container">
-        <form class="row g-3">
+        <form class="row g-3" action="/movies/" method="post">{% csrf_token %}
             <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Titulo</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Ejemplo: Harry Potter">
+                <label for="inputTitulo" class="form-label" >Titulo</label>
+                <input type="text" class="form-control" id="inputEmail4" name="titulo" placeholder="Ejemplo: Harry Potter">
             </div>
             <div class="col-md-6">
                 <label for="inputDuracion" class="form-label">Duracion en minutos</label>
-                <input type="number" class="form-control" id="inputDuracion" placeholder="Ejemplo: 120" >
+                <input type="number" class="form-control" id="inputDuracion" name="duracion" placeholder="Ejemplo: 120" >
             </div>
             <div class="col-12">
-                <label for="inputAddress" class="form-label">Calificacion</label>
-                <input type="text" class="form-control" id="inputAddress" >
+                <label for="inputCalificacion" class="form-label" >Calificacion</label>
+                <input type="text" class="form-control" id="inputAddress" name="calificacion">
             </div>
             <div class="col-12">
-                <label for="inputAddress2" class="form-label">Imagen de portada</label>
-                <input type="text" class="form-control" id="inputAddress2"
+                <label for="inputImagen" class="form-label" >Imagen de portada</label>
+                <input type="text" class="form-control" id="inputAddress2" name="imagenLink"
                     placeholder="http://imagenes.com.imagen1.jpg/">
             </div>
             <div class="col-md-6">
                 <label for="inputCity" class="form-label">Idioma</label>
-                <select id="inputState" class="form-select">
-                    <option>Español</option>
-                    <option>Subtitulada</option>
+                <select id="inputState" class="form-select" name="idioma">
+                    <option value="0">Español</option>
+                    <option value="1">Subtitulada</option>
                 </select>
             </div>
             <div class="col-md-6">
                 <label for="inputState" class="form-label">Genero</label>
-                <select id="inputState" class="form-select">
+                <select id="inputState" class="form-select" name="genero">
 
-                    {% for genero in info %}
+                    {% for k,v in info.items %}
 
-                    <option>{{ genero }}</option>
+                    
+                    <option value="{{ k }}">{{ v }}</option>
 
                     {% endfor %}
+					
 
 
                 </select>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Reseña</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="resenia"></textarea>
               </div>
               
             <!-- <div class="col-12">

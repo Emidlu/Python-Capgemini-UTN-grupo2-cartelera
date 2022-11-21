@@ -18,9 +18,21 @@ def agregar(request):
     info=db.all_genres()
     return render(request, "form-movie.html", {"info":info})
 
-# def pruebaDB(request):
-    # db=Database()
-    # info=db.all_users()
-    # return render(request, "index.html", {"info": info})
+def recibiendoPeliculaNueva(request):
+    # if request.method == "POST":   anidar?
+
+    titulo=request.POST.get("titulo")
+    duracion=request.POST.get("duracion")
+    calificacion=request.POST.get("calificacion")
+    imagenLink=request.POST.get("imagenLink")
+    idioma=request.POST.get("idioma")
+    genero=request.POST.get("genero")
+    resenia=request.POST.get("resenia")
+
+
+    db=Database()
+    db.insert_movie(titulo, duracion, calificacion, imagenLink, idioma, genero, resenia)
+
+    return render(request, "home.html")
 
 

@@ -21,11 +21,19 @@ class Database():
         self.cursor.execute(sql)
         generos=self.cursor.fetchall()
 
+        diccionarioGeneros = dict(generos)
         # for genero in generos:
         #     print("id:",genero[0] )
         #     print("Nombre:",genero[1] )
 
-        return generos
+        return diccionarioGeneros
+
+    def insert_movie(self, titulo, duracion, calificacion, imagenLink, idioma, genero, resenia):
+        # print(titulo, duracion, calificacion, imagenLink, idioma, genero, resenia)
+        sql = "INSERT INTO peliculas (titulo, duracion, calificacion, imagen_link, idioma, generos_id_generos, resenia) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        self.cursor.execute(sql, (titulo, duracion, calificacion, imagenLink, idioma, genero, resenia))
+        self.connection.commit()
+        print("Se inserto la pelicula")
 
 
 db= Database()

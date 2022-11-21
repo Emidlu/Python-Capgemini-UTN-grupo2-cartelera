@@ -22,5 +22,7 @@ urlpatterns = [
     path('cartelera/', cartelera),
     path('login/', login),
     path('admin/agregar/', agregar),
+    path('movies/', recibiendoPeliculaNueva),
+
     
 ]

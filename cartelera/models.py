@@ -36,5 +36,24 @@ class Database():
         print("Se inserto la pelicula")
 
 
+
+############## USUARIOS
+    def login(self, email, password):
+        sql = "SELECT * FROM usuarios WHERE email = %s AND password = %s"
+        self.cursor.execute(sql, (email, password))
+        usuario = self.cursor.fetchone()
+        return usuario
+
+
+    def isAdmin(self, user_id):
+        sql = "SELECT * FROM usuarios WHERE id_usuarios = %s"
+        self.cursor.execute(sql, (user_id))
+        usuario = self.cursor.fetchone()
+        if usuario[5] == 1:
+            return True
+        else:
+            return False
+
+
 db= Database()
 db.all_genres()

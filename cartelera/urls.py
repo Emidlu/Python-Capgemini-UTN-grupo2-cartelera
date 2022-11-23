@@ -18,11 +18,17 @@ from django.urls import path
 from cartelera.views import *
 
 urlpatterns = [
-    path('home/', home),
-    path('cartelera/', cartelera),
+
+    # Auth tiene 3 opciones de string segun el nivel de acceso: user admin none
+    path('', auth_required_pro, kwargs={'funcion': 'none', 'auth':'none' ,'view':'home.html'}),
+    path('cartelera/', auth_required_pro, kwargs={'funcion': 'none', 'auth':'none' ,'view':'cartelera.html'}), #user admin none
     path('login/', login),
-    path('admin/agregar/', agregar),
     path('movies/', recibiendoPeliculaNueva),
+    path('cerrarsesion/', cerrarsesion),
+    path('admin/agregar/', auth_required_pro, kwargs={'funcion': agregar, 'auth':'admin' ,'view':'none'}), #user admin none
+
+
+
 
     
 ]

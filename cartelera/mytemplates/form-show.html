@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+{% block content %} 
+
+<section class="form-movie-section">
+    <div class="container form-movie-container">
+        <form class="row g-3" action="/admin/agregar/funcion/" method="post">{% csrf_token %}
+
+            <div class="col-md-6">
+                <label for="inputState" class="form-label">Pelicula</label>
+                <select id="inputState" class="form-select" name="peliculaId">
+
+                    {% for k,v in movies.items %}
+
+                    
+                    <option value="{{ k }}">{{ v }}</option>
+
+                    {% endfor %}
+					
+
+
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Sala</label>
+                <select id="inputState" class="form-select" name="salaId">
+                    {% for k,v in rooms.items %}
+
+                    
+                    <option value="{{ k }}">{{ k }}</option>
+
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="exampleFormControlInput1" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1" name="date">
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Horario</label>
+                <select id="inputState" class="form-select" name="time">
+
+
+                    
+                    <option value="10:00:00">10:00</option>
+                    <option value="14:00:00">14:00</option>
+                    <option value="21:00:00">21:00</option>
+
+
+
+                </select>
+            </div>
+
+              
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

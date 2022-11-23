@@ -35,6 +35,20 @@ class Database():
         self.connection.commit()
         print("Se inserto la pelicula")
 
+    def all_movies(self):
+        sql = "SELECT id_peliculas, titulo FROM peliculas"
+        self.cursor.execute(sql)
+        peliculas = self.cursor.fetchall()
+        peliculasDiccionario = dict(peliculas)
+        return peliculasDiccionario
+
+    def all_rooms(self):
+        sql = "SELECT * FROM sala"
+        self.cursor.execute(sql)
+        salas = self.cursor.fetchall()
+        salasDiccionario = dict(salas)
+        return salasDiccionario
+
 
 
 ############## USUARIOS

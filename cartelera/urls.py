@@ -27,7 +27,11 @@ urlpatterns = [
     path('login/', login),
     path('movies/', recibiendoPeliculaNueva),
     path('cerrarsesion/', cerrarsesion),
-    path('admin/agregar/', auth_required_pro, kwargs={'funcion': agregar, 'auth':'admin' ,'view':'none'}), #user admin none
+    path('admin/agregar/', auth_required_pro, kwargs={'funcion': agregarPelicula, 'auth':'admin' ,'view':'none'}), #user admin none
+    
+    
+    path('admin/agregar/funcion/', agregarFuncion),
+
 
 
 

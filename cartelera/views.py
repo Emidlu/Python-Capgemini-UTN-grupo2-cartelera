@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
 from .models import Database
+from datetime import date, time, datetime
 
 # def home(request):
 #     try:
@@ -15,11 +16,52 @@ from .models import Database
 #     return render(request, "cartelera.html")
 
 
-def agregar(request):
+# def cartelera(request):
+#     db=Database()
+#     info=db.all_movies()
+
+#     return render(request, "cartelera.html")
+
+
+
+
+def agregarPelicula(request):
     db=Database()
     info=db.all_genres()
 
     return render(request, "form-movie.html", {"info":info, "user_id":True})
+
+
+def agregarFuncion(request):
+    if request.method == "POST": #Si entra por POST
+        peliculaId=request.POST.get("peliculaId")
+        salaId=request.POST.get("salaId")
+        date=request.POST.get("date")
+        time=request.POST.get("time")
+
+        print(peliculaId, salaId, date, time)
+
+        fechaConcatenada = date + " " + time
+
+        fecha_dt = datetime.strptime(fechaConcatenada, '%Y-%m-%d %H:%M:00')
+
+        print(fecha_dt)
+        
+
+
+        db=Database()
+        movies=db.all_movies()
+        rooms=db.all_rooms()
+        return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True})
+
+    else:
+        db=Database()
+        movies=db.all_movies()
+        rooms=db.all_rooms()
+        # print(movies)
+        # print(rooms)
+        return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True})
+
 
 
 
@@ -118,5 +160,3 @@ def auth_required_pro(request, **kwargs):
                 return render(request, view, {"user_id":True})
             except:
                 return render(request, view)
-        
-

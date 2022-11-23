@@ -57,7 +57,12 @@ def login(request):
             return render(request, "login.html")
 
     else: #Si entra por GET
-        return render(request, "login.html")
+        try:
+            user_id = request.session["user_id"]
+            return redirect("/")
+        except:
+            return render(request, "login.html")
+
 
 
 

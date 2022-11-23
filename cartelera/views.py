@@ -108,10 +108,15 @@ def auth_required_pro(request, **kwargs):
                     return redirect("/login")
 
         case "none":
+            funcion = kwargs["funcion"]
+            return funcion(request)
+
+        case "noneSimple":
             view = kwargs["view"]
             try:
                 user_id = request.session["user_id"]
                 return render(request, view, {"user_id":True})
             except:
                 return render(request, view)
+        
 

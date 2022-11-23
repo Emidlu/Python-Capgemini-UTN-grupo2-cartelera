@@ -148,7 +148,7 @@ CREATE TABLE `peliculas` (
   PRIMARY KEY (`id_peliculas`),
   KEY `fk_peliculas_generos1_idx` (`generos_id_generos`),
   CONSTRAINT `fk_peliculas_generos1` FOREIGN KEY (`generos_id_generos`) REFERENCES `generos` (`id_generos`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,6 +157,7 @@ CREATE TABLE `peliculas` (
 
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
+INSERT INTO `peliculas` VALUES (3,'Harry Potter','Buena pelicula',120,'calificacion',0,1,'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/6ff78b522f917f7ef331f466bd31b8d6156dec31740d84e98cb1846b9b049e28._RI_V_TTW_.jpg');
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,8 +198,9 @@ CREATE TABLE `usuarios` (
   `password` varchar(45) NOT NULL,
   `usuario` varchar(45) NOT NULL,
   `fecha_nacimiento` datetime NOT NULL,
+  `admin` tinyint NOT NULL,
   PRIMARY KEY (`id_usuarios`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,6 +209,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'usuario@usuario.com','1234','usuario1','2022-11-22 00:00:00',1),(2,'usuario2@usuario.com','1234','usuario2','1998-11-22 00:00:00',0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -219,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-20 23:56:38
+-- Dump completed on 2022-11-22 22:44:13

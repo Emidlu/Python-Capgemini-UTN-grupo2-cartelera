@@ -49,6 +49,12 @@ class Database():
         salasDiccionario = dict(salas)
         return salasDiccionario
 
+    def insert_show(self, peliculaId, sala, fechaHora):
+        sql = "INSERT INTO funcion (peliculas_id_peliculas, sala_id_sala, horario) VALUES (%s, %s, %s)"
+        self.cursor.execute(sql, (peliculaId, sala, fechaHora))
+        self.connection.commit()
+        print("Se inserto la funcion")
+
 
 
 ############## USUARIOS

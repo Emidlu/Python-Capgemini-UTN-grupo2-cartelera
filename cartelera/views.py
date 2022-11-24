@@ -39,17 +39,14 @@ def agregarFuncion(request):
         date=request.POST.get("date")
         time=request.POST.get("time")
 
-        print(peliculaId, salaId, date, time)
-
+        #Convertir a datetime
         fechaConcatenada = date + " " + time
-
         fecha_dt = datetime.strptime(fechaConcatenada, '%Y-%m-%d %H:%M:00')
 
-        print(fecha_dt)
-        
-
-
         db=Database()
+        db.insert_show(peliculaId, salaId, fecha_dt)
+
+        #Hacer que redireccione a la pagina de panel de administrador
         movies=db.all_movies()
         rooms=db.all_rooms()
         return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True})

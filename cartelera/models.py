@@ -55,7 +55,28 @@ class Database():
         self.connection.commit()
         print("Se inserto la funcion")
 
+    def search_show(self, sala, fechaHora):
+        sql = "SELECT * FROM funcion WHERE sala_id_sala = %s AND horario = %s"
+        self.cursor.execute(sql, (sala, fechaHora))
+        funcion = self.cursor.fetchone()
+        return funcion
 
+    def search_show_by_date(self, fecha):
+        horario1 = fecha +' 00:00:00'
+        horario2 = fecha +' 23:59:00'
+
+        sql = "SELECT * FROM funcion WHERE horario BETWEEN %s AND %s"
+        self.cursor.execute(sql, (horario1, horario2))
+        funciones = self.cursor.fetchall()
+        return funciones
+
+    def search_show_by_date_and_hour(self, fecha, hora):
+        horario1 = fecha +' '+ hora
+
+        sql = "SELECT * FROM funcion WHERE horario LIKE %s"
+        self.cursor.execute(sql, (horario1))
+        funciones = self.cursor.fetchall()
+        return funciones
 
 ############## USUARIOS
     def login(self, email, password):

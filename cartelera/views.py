@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
 from .models import Database
-from datetime import date, time, datetime
+from datetime import date, time, datetime, timedelta
+from .aux_shows import *
 
 # def home(request):
 #     try:
@@ -49,15 +50,30 @@ def agregarFuncion(request):
         #Hacer que redireccione a la pagina de panel de administrador
         movies=db.all_movies()
         rooms=db.all_rooms()
-        return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True})
+        fechaHoraActual = datetime.now()
+
+        lunesAnterior = primerLunesAnterior(fechaHoraActual)
+        lunesSiguiente = lunesAnterior + timedelta(days=7)
+        matrizSemana1 = matriz_shows(lunesAnterior)
+        matrizSemana2 = matriz_shows(lunesSiguiente)
+        dias = catorceDias(lunesAnterior)
+
+        return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True, "matrizSemana1":matrizSemana1, "matrizSemana2":matrizSemana2, "dias":dias })
 
     else:
         db=Database()
         movies=db.all_movies()
         rooms=db.all_rooms()
-        # print(movies)
-        # print(rooms)
-        return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True})
+
+        fechaHoraActual = datetime.now()
+
+        lunesAnterior = primerLunesAnterior(fechaHoraActual)
+        lunesSiguiente = lunesAnterior + timedelta(days=7)
+        matrizSemana1 = matriz_shows(lunesAnterior)
+        matrizSemana2 = matriz_shows(lunesSiguiente)
+        dias = catorceDias(lunesAnterior)
+
+        return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True, "matrizSemana1":matrizSemana1, "matrizSemana2":matrizSemana2, "dias":dias })
 
 
 

@@ -200,3 +200,38 @@ background: #eee;
   margin: 40px;
 }
 
+/* Calendario de form de funciones */
+
+
+
+.item-chico{
+  height: 33.33px;
+  width: 33.33px!important;
+}
+
+.item-grande{
+  height: 100px;
+  width: 100px!important;
+}
+
+.item-titulo{
+  height: 100px;
+  width: 102px!important;
+}
+
+.rojo{
+  background-color: red;
+}
+
+.item-largo{
+  width: 100px;
+  height: 33.33px;
+}
+.item-largo2{
+  width: 102px;
+  height: 33.33px;
+  display: flex;
+  justify-content: center;
+  padding-right: 0px;
+  padding-left: 0px;
+}

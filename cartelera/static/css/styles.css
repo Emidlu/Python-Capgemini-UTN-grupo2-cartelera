@@ -235,3 +235,59 @@ background: #eee;
   padding-right: 0px;
   padding-left: 0px;
 }
+
+
+/* PANEL ADMIN */
+.admin-menu-item{
+  margin: 5px 0px;
+  align-items: center;
+  width: 440px!important;
+  height: 38.07px;
+  padding: 20px;
+  border-radius: 0.375rem;
+  margin: 10px;
+}
+
+.admin-menu-title{
+  margin-bottom: 15px!important;
+  align-items: center;
+  height: 55.98px!important;
+  width: 440px!important;
+  padding: 20px;
+  border-radius: 0.375rem;
+  margin: 10px;
+  color: white;
+  font-size: 25px;
+}
+
+.verde-cine{
+  background-color: #009186!important;
+  border-color: #009186!important;
+}
+
+.rojo-cine{
+  background-color: #fe505a!important;
+  border-color: #fe505a!important;
+}
+
+.titulo-panel{
+
+  margin: 40px;
+
+}
+
+.panel-administracion-section{
+  margin-top: 60px;
+  margin-bottom: 250px;
+
+}
+
+.no-subrayado{
+  text-decoration: none;
+
+}
+
+
+.panel-administracion-titulo{
+  font-family: 'Roboto';font-size: 50px;
+}

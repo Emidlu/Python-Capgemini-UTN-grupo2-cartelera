@@ -28,10 +28,10 @@ class Database():
 
         return diccionarioGeneros
 
-    def insert_movie(self, titulo, duracion, calificacion, imagenLink, idioma, genero, resenia):
+    def insert_movie(self, titulo, duracion, calificacion, imagenLink, idioma, genero, resenia, fechaEstreno):
         # print(titulo, duracion, calificacion, imagenLink, idioma, genero, resenia)
-        sql = "INSERT INTO peliculas (titulo, duracion, calificacion, imagen_link, idioma, generos_id_generos, resenia) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        self.cursor.execute(sql, (titulo, duracion, calificacion, imagenLink, idioma, genero, resenia))
+        sql = "INSERT INTO peliculas (titulo, duracion, calificacion, imagen_link, idioma, generos_id_generos, resenia, fecha_estreno) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        self.cursor.execute(sql, (titulo, duracion, calificacion, imagenLink, idioma, genero, resenia, fechaEstreno))
         self.connection.commit()
         print("Se inserto la pelicula")
 

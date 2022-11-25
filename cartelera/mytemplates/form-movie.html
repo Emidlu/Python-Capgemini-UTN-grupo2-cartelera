@@ -3,6 +3,8 @@
 
 {% block content %} 
 
+
+
 <section class="form-movie-section">
     <div class="container form-movie-container">
         <form class="row g-3" action="/movies/" method="post">{% csrf_token %}
@@ -56,6 +58,10 @@
 
 
                 </select>
+            </div>
+            <div class="col-md-6">
+                <label for="exampleFormControlInput1" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1" name="date" required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Reseña</label>

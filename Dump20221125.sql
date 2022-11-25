@@ -93,7 +93,7 @@ CREATE TABLE `funcion` (
   KEY `fk_entrada_peliculas1_idx` (`peliculas_id_peliculas`),
   CONSTRAINT `fk_entrada_peliculas1` FOREIGN KEY (`peliculas_id_peliculas`) REFERENCES `peliculas` (`id_peliculas`),
   CONSTRAINT `fk_entrada_sala` FOREIGN KEY (`sala_id_sala`) REFERENCES `sala` (`id_sala`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +102,7 @@ CREATE TABLE `funcion` (
 
 LOCK TABLES `funcion` WRITE;
 /*!40000 ALTER TABLE `funcion` DISABLE KEYS */;
+INSERT INTO `funcion` VALUES (1,'2022-11-24 21:00:00',3,4),(2,'2022-11-24 10:00:00',1,3),(3,'2022-11-25 14:00:00',2,3),(4,'2022-12-04 21:00:00',3,5),(5,'2022-12-02 10:00:00',1,6),(6,'2022-11-28 14:00:00',3,3),(7,'2022-11-30 10:00:00',3,3),(8,'2022-11-30 21:00:00',3,7);
 /*!40000 ALTER TABLE `funcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,10 +146,11 @@ CREATE TABLE `peliculas` (
   `idioma` tinyint(1) NOT NULL,
   `generos_id_generos` int NOT NULL,
   `imagen_link` varchar(250) NOT NULL,
+  `fecha_estreno` date NOT NULL,
   PRIMARY KEY (`id_peliculas`),
   KEY `fk_peliculas_generos1_idx` (`generos_id_generos`),
   CONSTRAINT `fk_peliculas_generos1` FOREIGN KEY (`generos_id_generos`) REFERENCES `generos` (`id_generos`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +159,7 @@ CREATE TABLE `peliculas` (
 
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
-INSERT INTO `peliculas` VALUES (3,'Harry Potter','Buena pelicula',120,'calificacion',0,1,'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/6ff78b522f917f7ef331f466bd31b8d6156dec31740d84e98cb1846b9b049e28._RI_V_TTW_.jpg');
+INSERT INTO `peliculas` VALUES (3,'Harry Potter','Buena pelicula',120,'calificacion',0,1,'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/6ff78b522f917f7ef331f466bd31b8d6156dec31740d84e98cb1846b9b049e28._RI_V_TTW_.jpg','0000-00-00'),(4,'Avatar 2','esta es una pelicula de aliens y no se q',240,'pegi 13',1,4,'https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg','0000-00-00'),(5,'asdasd','asad',210,'P-13',0,1,'https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg','0000-00-00'),(6,'asdasd','asad',210,'P-13',0,1,'https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg','0000-00-00'),(7,'Terminator','Película de un robot asesino',250,'P-16',1,2,'https://pics.filmaffinity.com/Terminator-741269996-large.jpg','2022-11-26');
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-22 22:44:13
+-- Dump completed on 2022-11-25 19:18:57

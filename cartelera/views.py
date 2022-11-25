@@ -88,10 +88,11 @@ def recibiendoPeliculaNueva(request):
     idioma=request.POST.get("idioma")
     genero=request.POST.get("genero")
     resenia=request.POST.get("resenia")
+    fechaEstreno=request.POST.get("date")
 
 
     db=Database()
-    db.insert_movie(titulo, duracion, calificacion, imagenLink, idioma, genero, resenia)
+    db.insert_movie(titulo, duracion, calificacion, imagenLink, idioma, genero, resenia, fechaEstreno)
 
     return render(request, "home.html")
 
@@ -173,3 +174,8 @@ def auth_required_pro(request, **kwargs):
                 return render(request, view, {"user_id":True})
             except:
                 return render(request, view)
+
+
+def adminView(request):
+    return render(request, "admin-side-panel.html", {"user_id":True})
+

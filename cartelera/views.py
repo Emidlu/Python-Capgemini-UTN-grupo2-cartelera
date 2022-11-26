@@ -54,9 +54,10 @@ def agregarFuncion(request):
 
         lunesAnterior = primerLunesAnterior(fechaHoraActual)
         lunesSiguiente = lunesAnterior + timedelta(days=7)
-        matrizSemana1 = matriz_shows(lunesAnterior)
-        matrizSemana2 = matriz_shows(lunesSiguiente)
-        dias = catorceDias(lunesAnterior)
+        matrizSemana1 = matriz_shows_semana(lunesAnterior)
+        matrizSemana2 = matriz_shows_semana(lunesSiguiente)
+        dias = proximosDias(lunesAnterior, 14)
+
 
         return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True, "matrizSemana1":matrizSemana1, "matrizSemana2":matrizSemana2, "dias":dias })
 
@@ -69,9 +70,9 @@ def agregarFuncion(request):
 
         lunesAnterior = primerLunesAnterior(fechaHoraActual)
         lunesSiguiente = lunesAnterior + timedelta(days=7)
-        matrizSemana1 = matriz_shows(lunesAnterior)
-        matrizSemana2 = matriz_shows(lunesSiguiente)
-        dias = catorceDias(lunesAnterior)
+        matrizSemana1 = matriz_shows_semana(lunesAnterior)
+        matrizSemana2 = matriz_shows_semana(lunesSiguiente)
+        dias = proximosDias(lunesAnterior, 14)
 
         return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True, "matrizSemana1":matrizSemana1, "matrizSemana2":matrizSemana2, "dias":dias })
 

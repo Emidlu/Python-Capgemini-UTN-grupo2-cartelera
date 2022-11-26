@@ -20,10 +20,10 @@ from cartelera.views import *
 urlpatterns = [
 
     # Auth tiene 3 opciones de string segun el nivel de acceso: 
-    # user admin none noneSimple(sin funcion, solo muestra el html con el logueo)
-    # view solo es requerido si se usa noneSimple
+    # user admin none anybodySimple(sin funcion, solo muestra el html con el logueo) notLogged
+    # view solo es requerido si se usa anybodySimple
     path('', auth_required_pro, kwargs={'funcion': 'none', 'auth':'anybodySimple' ,'view':'home.html'}),
-    path('cartelera/', auth_required_pro, kwargs={'funcion': 'none', 'auth':'anybodySimple' ,'view':'cartelera.html'}), #user admin none
+    path('cartelera/', auth_required_pro, kwargs={'funcion': 'none', 'auth':'anybodySimple' ,'view':'cartelera.html'}),
     path('login/', auth_required_pro, kwargs={'funcion': login, 'auth':'notLogged' ,'view':'none'}),
     path('register/', auth_required_pro, kwargs={'funcion': register, 'auth':'notLogged' ,'view':'none'}),
 
@@ -32,9 +32,9 @@ urlpatterns = [
 
 
 
-    path('admin/', auth_required_pro, kwargs={'funcion': adminView, 'auth':'admin' ,'view':'none'}), #user admin none
-    path('admin/agregar/pelicula/', auth_required_pro, kwargs={'funcion': agregarPelicula, 'auth':'admin' ,'view':'none'}), #user admin none
-    path('admin/agregar/funcion/', auth_required_pro, kwargs={'funcion': agregarFuncion, 'auth':'admin' ,'view':'none'}), #user admin none
+    path('admin/', auth_required_pro, kwargs={'funcion': adminView, 'auth':'admin' ,'view':'none'}),
+    path('admin/agregar/pelicula/', auth_required_pro, kwargs={'funcion': agregarPelicula, 'auth':'admin' ,'view':'none'}),
+    path('admin/agregar/funcion/', auth_required_pro, kwargs={'funcion': agregarFuncion, 'auth':'admin' ,'view':'none'}),
     
 
 

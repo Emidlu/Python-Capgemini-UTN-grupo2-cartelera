@@ -95,6 +95,13 @@ class Database():
         else:
             return False
 
+    def insert_user(self, usuario, fecha_nacimiento, email, password):
+        sql = "INSERT INTO usuarios (usuario, fecha_nacimiento, email, password, admin) VALUES (%s, %s, %s, %s, %s)"
+        self.cursor.execute(sql, (usuario, fecha_nacimiento, email, password, 0))
+        self.connection.commit()
+        print("Se inserto el usuario")
+
+
 
 db= Database()
 db.all_genres()

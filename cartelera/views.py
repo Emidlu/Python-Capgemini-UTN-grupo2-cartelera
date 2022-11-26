@@ -121,6 +121,21 @@ def login(request):
 
 
 
+def register(request):
+    if request.method == "POST": #Si entra por POST
+        usuario=request.POST.get("usuario")
+        fecha_nacimiento=request.POST.get("fecha_nacimiento")
+        email=request.POST.get("email")
+        password=request.POST.get("password")
+
+        db=Database()
+        db.insert_user(usuario, fecha_nacimiento, email, password)
+
+        return render(request, "login.html")
+
+    else: #Si entra por GET
+        return render(request, "register.html")
+
 
 
 def cerrarsesion(request):
@@ -163,17 +178,25 @@ def auth_required_pro(request, **kwargs):
                 except:
                     return redirect("/login")
 
-        case "none":
+        case "anybody":
             funcion = kwargs["funcion"]
             return funcion(request)
 
-        case "noneSimple":
+        case "anybodySimple":
             view = kwargs["view"]
             try:
                 user_id = request.session["user_id"]
                 return render(request, view, {"user_id":True})
             except:
                 return render(request, view)
+
+        case "notLogged":
+            try:
+                user_id = request.session["user_id"]
+                return redirect("/")
+            except:
+                funcion = kwargs["funcion"]
+                return funcion(request)
 
 
 def adminView(request):

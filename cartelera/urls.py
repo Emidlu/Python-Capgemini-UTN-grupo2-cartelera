@@ -22,11 +22,14 @@ urlpatterns = [
     # Auth tiene 3 opciones de string segun el nivel de acceso: 
     # user admin none noneSimple(sin funcion, solo muestra el html con el logueo)
     # view solo es requerido si se usa noneSimple
-    path('', auth_required_pro, kwargs={'funcion': 'none', 'auth':'noneSimple' ,'view':'home.html'}),
-    path('cartelera/', auth_required_pro, kwargs={'funcion': 'none', 'auth':'noneSimple' ,'view':'cartelera.html'}), #user admin none
-    path('login/', login),
+    path('', auth_required_pro, kwargs={'funcion': 'none', 'auth':'anybodySimple' ,'view':'home.html'}),
+    path('cartelera/', auth_required_pro, kwargs={'funcion': 'none', 'auth':'anybodySimple' ,'view':'cartelera.html'}), #user admin none
+    path('login/', auth_required_pro, kwargs={'funcion': login, 'auth':'notLogged' ,'view':'none'}),
+    path('register/', auth_required_pro, kwargs={'funcion': register, 'auth':'notLogged' ,'view':'none'}),
+
     path('movies/', recibiendoPeliculaNueva),
     path('cerrarsesion/', cerrarsesion),
+
 
 
     path('admin/', auth_required_pro, kwargs={'funcion': adminView, 'auth':'admin' ,'view':'none'}), #user admin none

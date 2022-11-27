@@ -24,9 +24,17 @@ def cartelera(request):
     generos=db.all_genres()
     print(info)
 
-    return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos})
+    return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Cartelera"})
 
 
+def estrenos(request):
+    db=Database()
+    fechaHoraActual = datetime.now()
+    info=db.estrenos(fechaHoraActual)
+    generos=db.all_genres()
+    print(info)
+
+    return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Próximos Estrenos"})
 
 
 def agregarPelicula(request):

@@ -83,8 +83,16 @@ class Database():
     def cartelera(self, dateTime):
         date=datetime.strftime(dateTime, '%Y-%m-%d')
 
-        sql = "SELECT * FROM peliculas  INNER JOIN funcion ON funcion.peliculas_id_peliculas=peliculas.id_peliculas WHERE peliculas.fecha_estreno >= %s AND funcion.horario >= %s"
+        sql = "SELECT * FROM peliculas  INNER JOIN funcion ON funcion.peliculas_id_peliculas=peliculas.id_peliculas WHERE peliculas.fecha_estreno <= %s AND funcion.horario >= %s"
         self.cursor.execute(sql, (date, dateTime))
+        funciones = self.cursor.fetchall()
+        return funciones
+
+    def estrenos(self, dateTime):
+        date=datetime.strftime(dateTime, '%Y-%m-%d')
+
+        sql = "SELECT * FROM peliculas  INNER JOIN funcion ON funcion.peliculas_id_peliculas=peliculas.id_peliculas WHERE peliculas.fecha_estreno >= %s"
+        self.cursor.execute(sql, (date))
         funciones = self.cursor.fetchall()
         return funciones
 

@@ -1,4 +1,5 @@
 import pymysql
+from datetime import date, time, datetime, timedelta
 # definimos un objetos Base de datos
 class Database():
     #creamos el constructor con la bbdd elegida a través de pymysql
@@ -75,6 +76,15 @@ class Database():
 
         sql = "SELECT * FROM funcion WHERE horario LIKE %s"
         self.cursor.execute(sql, (horario1))
+        funciones = self.cursor.fetchall()
+        return funciones
+
+
+    def cartelera(self, dateTime):
+        date=datetime.strftime(dateTime, '%Y-%m-%d')
+
+        sql = "SELECT * FROM peliculas  INNER JOIN funcion ON funcion.peliculas_id_peliculas=peliculas.id_peliculas WHERE peliculas.fecha_estreno >= %s AND funcion.horario >= %s"
+        self.cursor.execute(sql, (date, dateTime))
         funciones = self.cursor.fetchall()
         return funciones
 

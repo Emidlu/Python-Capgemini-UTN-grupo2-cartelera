@@ -17,11 +17,14 @@ from .aux_shows import *
 #     return render(request, "cartelera.html")
 
 
-# def cartelera(request):
-#     db=Database()
-#     info=db.all_movies()
+def cartelera(request):
+    db=Database()
+    fechaHoraActual = datetime.now()
+    info=db.cartelera(fechaHoraActual)
+    generos=db.all_genres()
+    print(info)
 
-#     return render(request, "cartelera.html")
+    return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos})
 
 
 

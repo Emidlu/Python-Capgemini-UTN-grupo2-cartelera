@@ -33,7 +33,7 @@
 }
 
 #navbarColor01{
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 
@@ -49,7 +49,6 @@
     width: 39px;
     height: 39px;
 }
-
 
 
 
@@ -83,7 +82,7 @@
 } */
 
 .movie-container-cartelera{
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 auto;
@@ -101,6 +100,17 @@
     margin: 0 auto;
 }
 
+
+.titulo-cartelera-div{
+    display: flex;
+    justify-content: center;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-size: 30px!important;
+}
+
+.titulo-cartelera{
+  font-size: 3rem;
+}
 
 
 /* LOGIN */

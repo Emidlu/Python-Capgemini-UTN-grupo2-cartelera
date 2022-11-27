@@ -8,30 +8,51 @@
 <section class="container-cartelera">
 
 
+    <div class="movie-container-cartelera titulo-cartelera-div">
+        <h1 class="titulo-cartelera">CARTELERA</h1>
+    </div>
 
 
     <div id="listaPeliculasConProgramacion">
 
+        {% for pelicula in peliculas %}
         <div class="movie-container-cartelera">
             <div class="movie movie--preview movie--full release row justify-content-between">
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                    <div class="movie__images"><img alt="" src="../static/images/1663262682-1772.jpeg"
+                    <div class="movie__images"><img alt="" src="{{ pelicula.7 }}"
                             class="movie__images_cartelera"></div>
                 </div>
-                <div class="col-sm-9 col-md-7 col-lg-9"><a href="Pelicula.php?idDB=84"
-                        class="movie__title link--huge">ARGENTINA, 1985</a>
-                    <p class="movie__time">140 min</p>
-                    <p class="movie__option"><strong>Género: </strong>Drama</p>
-                    <p class="movie__option"><strong>Clasificación: </strong>+13</p>
-                    <p class="movie__option"><strong>Fecha de Estreno: </strong>29/09/2022</p>
-                    <p class="movie__option sinopsis"><strong>Sinopsis: </strong>Argentina, 1985 está inspirada
-                        en la
-                        historia real de Julio Strassera, Luis Moreno Ocampo y su joven equipo jurídico que se
-                        atrevieron a
-                        acusar, contra viento y marea, a contrarreloj y bajo constante amenaza, a la más
-                        sangrienta
-                        dictadura militar argentina. Una batalla de David contra Goliat, con los héroes menos
-                        esperados.
+                <div class="col-sm-9 col-md-7 col-lg-9"><a href=""
+                        class="movie__title link--huge">{{ pelicula.1 }}</a>
+                    <p class="movie__time">{{ pelicula.3 }} min</p>
+                    <p class="movie__option"><strong>Género: </strong>{% if pelicula.6 == 1 %}
+                        {{ generos.1 }}
+                        {% endif %}
+                        {% if pelicula.6 == 2 %}
+                        {{ generos.2 }}
+                        {% endif %}
+                        {% if pelicula.6 == 3 %}
+                        {{ generos.3 }}
+                        {% endif %}
+                        {% if pelicula.6 == 4 %}
+                        {{ generos.4 }}
+                        {% endif %}
+                        {% if pelicula.6 == 5 %}
+                        {{ generos.5 }}
+                        {% endif %}
+                        {% if pelicula.6 == 6 %}
+                        {{ generos.6 }}
+                        {% endif %}
+                        {% if pelicula.6 == 7 %}
+                        {{ generos.7 }}
+                        {% endif %}
+                        {% if pelicula.6 == 8 %}
+                        {{ generos.8 }}
+                        {% endif %}
+                    </p>
+                    <p class="movie__option"><strong>Clasificación: </strong>{{ pelicula.4 }}</p>
+                    <p class="movie__option"><strong>Fecha de Estreno: </strong> {{ pelicula.8|date:"d-m-Y" }}</p>
+                    <p class="movie__option sinopsis"><strong>Sinopsis: </strong>{{ pelicula.2}}
 
                     </p>
                     <div class="buttons-cards">
@@ -46,41 +67,9 @@
 
             </div>
         </div>
+        {% endfor %}
 
-        <div class="movie-container-cartelera">
-            <div class="movie movie--preview movie--full release row justify-content-between">
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                    <div class="movie__images"><img alt="" src="../static/images/1663262682-1772.jpeg"
-                            class="movie__images_cartelera"></div>
-                </div>
-                <div class="col-sm-9 col-md-7 col-lg-9"><a href="Pelicula.php?idDB=84"
-                        class="movie__title link--huge">ARGENTINA, 1985</a>
-                    <p class="movie__time">140 min</p>
-                    <p class="movie__option"><strong>Género: </strong>Drama</p>
-                    <p class="movie__option"><strong>Clasificación: </strong>+13</p>
-                    <p class="movie__option"><strong>Fecha de Estreno: </strong>29/09/2022</p>
-                    <p class="movie__option sinopsis"><strong>Sinopsis: </strong>Argentina, 1985 está inspirada
-                        en la
-                        historia real de Julio Strassera, Luis Moreno Ocampo y su joven equipo jurídico que se
-                        atrevieron a
-                        acusar, contra viento y marea, a contrarreloj y bajo constante amenaza, a la más
-                        sangrienta
-                        dictadura militar argentina. Una batalla de David contra Goliat, con los héroes menos
-                        esperados.
 
-                    </p>
-                    <div class="buttons-cards">
-                        <div>
-                            <i class="fa-solid fa-ticket fa-3x"></i>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-compra-card ">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
 
 
 

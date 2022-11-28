@@ -18,13 +18,31 @@ from .aux_shows import *
 
 
 def cartelera(request):
-    db=Database()
-    fechaHoraActual = datetime.now()
-    info=db.cartelera(fechaHoraActual)
-    generos=db.all_genres()
-    print(info)
+    if request.method == "POST":
+        peliculaId=request.POST.get("peliculaId")
 
-    return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Cartelera"})
+
+        #Convertir a datetime
+        # fechaConcatenada = date + " " + time
+        # fecha_dt = datetime.strptime(fechaConcatenada, '%Y-%m-%d %H:%M:00')
+
+        db=Database()
+        fechaActual = datetime.now()
+        peliculaShows = db.movie_show_by_id(peliculaId, fechaActual)
+        pelicula = db.movie_by_id(peliculaId)
+        # print(peliculaShows)
+        # print(pelicula)
+        
+
+        return render(request, "movie-show.html",{ "pelicula":pelicula, "user_id":True, "titulo": "Elegir Función", "shows":peliculaShows})
+    else:
+        db=Database()
+        fechaHoraActual = datetime.now()
+        info=db.cartelera(fechaHoraActual)
+        generos=db.all_genres()
+        # print(info)
+
+        return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Cartelera"})
 
 
 def estrenos(request):
@@ -150,6 +168,60 @@ def register(request):
 
 
 
+
+
+
+
+def elegirFuncion(request):
+    if request.method == "POST":
+        db=Database()
+        show_id=request.POST.get("show_id")
+        entradas = db.entradas_by_show_id(show_id)
+        butacasOcupadas = []
+        for i in range(100):
+            butacasOcupadas.append(False)
+        print(butacasOcupadas)
+        for entrada in entradas:
+            butacasOcupadas[entrada[3]-1] = True
+        print(butacasOcupadas)
+
+    return render(request, "compra.html", { "user_id":True, "butacasOcupadas":butacasOcupadas, "show_id":show_id})
+
+
+
+
+
+
+
+def entrada(request):
+    if request.method == "POST":
+        db=Database()
+        butacas=request.POST.get("butacas")
+        show_id=request.POST.get("show_id")
+        arr = butacas.replace('[', '').replace(']', '').split(',')
+        show = db.show_by_id(show_id)
+        sala_id = show[2]
+        user_id = request.session["user_id"]
+
+        for butaca in arr:
+            db.crearEntrada(show_id, user_id, butaca, 600)
+
+        return render(request, "compra.html", { "user_id":True})
+
+    else:
+        return render(request, "home.html", { "user_id":True})
+
+
+
+
+
+
+
+
+
+
+
+
 def cerrarsesion(request):
     del request.session['user_id']
     return redirect("/")
@@ -163,6 +235,8 @@ def cerrarsesion(request):
 
 #     except:
 #         return redirect("/login")
+
+
 
 
 

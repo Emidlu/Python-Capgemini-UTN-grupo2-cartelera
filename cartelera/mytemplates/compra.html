@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+<section>
+    <div class="form-movie-container">
+        <div class="d-flex">
+
+            <ul class="list-group grosor">
+                <li class="list-group-item item-larguisimo"> Pantalla</li>
+            </ul>
+
+
+
+        </div>
+
+        <div class="d-flex">
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico"></li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">1</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">2</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">3</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">4</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">5</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">6</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">7</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">8</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">9</li>
+            </ul>
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">10</li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div class="d-flex" id="matriz">
+            <ul class="list-group grosor">
+                <li class="list-group-item item-chico">1</li>
+                <li class="list-group-item item-chico">2</li>
+                <li class="list-group-item item-chico">3</li>
+                <li class="list-group-item item-chico">4</li>
+                <li class="list-group-item item-chico">5</li>
+                <li class="list-group-item item-chico">6</li>
+                <li class="list-group-item item-chico">7</li>
+                <li class="list-group-item item-chico">8</li>
+                <li class="list-group-item item-chico">9</li>
+                <li class="list-group-item item-chico">10</li>
+
+
+
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.0 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton1"></button>{% endif %}
+                {% if butacasOcupadas.10 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton11"></button>{% endif %}
+                {% if butacasOcupadas.20 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton21"></button>{% endif %}
+                {% if butacasOcupadas.30 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton31"></button>{% endif %}
+                {% if butacasOcupadas.40 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton41"></button>{% endif %}
+                {% if butacasOcupadas.50 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton51"></button>{% endif %}
+                {% if butacasOcupadas.60 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton61"></button>{% endif %}
+                {% if butacasOcupadas.70 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton71"></button>{% endif %}
+                {% if butacasOcupadas.80 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton81"></button>{% endif %}
+                {% if butacasOcupadas.90 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton91"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.1 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton2"></button>{% endif %}
+                {% if butacasOcupadas.11 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton12"></button>{% endif %}
+                {% if butacasOcupadas.21 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton22"></button>{% endif %}
+                {% if butacasOcupadas.31 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton32"></button>{% endif %}
+                {% if butacasOcupadas.41 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton42"></button>{% endif %}
+                {% if butacasOcupadas.51 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton52"></button>{% endif %}
+                {% if butacasOcupadas.61 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton62"></button>{% endif %}
+                {% if butacasOcupadas.71 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton72"></button>{% endif %}
+                {% if butacasOcupadas.81 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton82"></button>{% endif %}
+                {% if butacasOcupadas.91 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton92"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.2 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton3"></button>{% endif %}
+                {% if butacasOcupadas.12 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton13"></button>{% endif %}
+                {% if butacasOcupadas.22 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton23"></button>{% endif %}
+                {% if butacasOcupadas.32 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton33"></button>{% endif %}
+                {% if butacasOcupadas.42 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton43"></button>{% endif %}
+                {% if butacasOcupadas.52 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton53"></button>{% endif %}
+                {% if butacasOcupadas.62 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton63"></button>{% endif %}
+                {% if butacasOcupadas.72 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton73"></button>{% endif %}
+                {% if butacasOcupadas.82 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton83"></button>{% endif %}
+                {% if butacasOcupadas.92 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton93"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.3 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton4"></button>{% endif %}
+                {% if butacasOcupadas.13 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton14"></button>{% endif %}
+                {% if butacasOcupadas.23 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton24"></button>{% endif %}
+                {% if butacasOcupadas.33 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton34"></button>{% endif %}
+                {% if butacasOcupadas.43 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton44"></button>{% endif %}
+                {% if butacasOcupadas.53 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton54"></button>{% endif %}
+                {% if butacasOcupadas.63 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton64"></button>{% endif %}
+                {% if butacasOcupadas.73 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton74"></button>{% endif %}
+                {% if butacasOcupadas.83 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton84"></button>{% endif %}
+                {% if butacasOcupadas.93 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton94"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.4 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton5"></button>{% endif %}
+                {% if butacasOcupadas.14 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton15"></button>{% endif %}
+                {% if butacasOcupadas.24 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton25"></button>{% endif %}
+                {% if butacasOcupadas.34 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton35"></button>{% endif %}
+                {% if butacasOcupadas.44 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton45"></button>{% endif %}
+                {% if butacasOcupadas.54 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton55"></button>{% endif %}
+                {% if butacasOcupadas.64 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton65"></button>{% endif %}
+                {% if butacasOcupadas.74 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton75"></button>{% endif %}
+                {% if butacasOcupadas.84 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton85"></button>{% endif %}
+                {% if butacasOcupadas.94 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton95"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.5 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton6"></button>{% endif %}
+                {% if butacasOcupadas.15 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton16"></button>{% endif %}
+                {% if butacasOcupadas.25 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton26"></button>{% endif %}
+                {% if butacasOcupadas.35 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton36"></button>{% endif %}
+                {% if butacasOcupadas.45 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton46"></button>{% endif %}
+                {% if butacasOcupadas.55 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton56"></button>{% endif %}
+                {% if butacasOcupadas.65 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton66"></button>{% endif %}
+                {% if butacasOcupadas.75 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton76"></button>{% endif %}
+                {% if butacasOcupadas.85 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton86"></button>{% endif %}
+                {% if butacasOcupadas.95 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton96"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.6 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton7"></button>{% endif %}
+                {% if butacasOcupadas.16 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton17"></button>{% endif %}
+                {% if butacasOcupadas.26 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton27"></button>{% endif %}
+                {% if butacasOcupadas.36 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton37"></button>{% endif %}
+                {% if butacasOcupadas.46 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton47"></button>{% endif %}
+                {% if butacasOcupadas.56 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton57"></button>{% endif %}
+                {% if butacasOcupadas.66 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton67"></button>{% endif %}
+                {% if butacasOcupadas.76 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton77"></button>{% endif %}
+                {% if butacasOcupadas.86 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton87"></button>{% endif %}
+                {% if butacasOcupadas.96 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton97"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.7 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton8"></button>{% endif %}
+                {% if butacasOcupadas.17 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton18"></button>{% endif %}
+                {% if butacasOcupadas.27 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton28"></button>{% endif %}
+                {% if butacasOcupadas.37 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton38"></button>{% endif %}
+                {% if butacasOcupadas.47 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton48"></button>{% endif %}
+                {% if butacasOcupadas.57 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton58"></button>{% endif %}
+                {% if butacasOcupadas.67 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton68"></button>{% endif %}
+                {% if butacasOcupadas.77 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton78"></button>{% endif %}
+                {% if butacasOcupadas.87 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton88"></button>{% endif %}
+                {% if butacasOcupadas.97 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton98"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.8 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton9"></button>{% endif %}
+                {% if butacasOcupadas.18 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton19"></button>{% endif %}
+                {% if butacasOcupadas.28 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton29"></button>{% endif %}
+                {% if butacasOcupadas.38 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton39"></button>{% endif %}
+                {% if butacasOcupadas.48 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton49"></button>{% endif %}
+                {% if butacasOcupadas.58 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton59"></button>{% endif %}
+                {% if butacasOcupadas.68 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton69"></button>{% endif %}
+                {% if butacasOcupadas.78 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton79"></button>{% endif %}
+                {% if butacasOcupadas.88 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton89"></button>{% endif %}
+                {% if butacasOcupadas.98 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton99"></button>{% endif %}
+            </ul>
+            <ul class="list-group grosor">
+                {% if butacasOcupadas.9 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton10"></button>{% endif %}
+                {% if butacasOcupadas.19 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton20"></button>{% endif %}
+                {% if butacasOcupadas.29 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton30"></button>{% endif %}
+                {% if butacasOcupadas.39 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton40"></button>{% endif %}
+                {% if butacasOcupadas.49 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton50"></button>{% endif %}
+                {% if butacasOcupadas.59 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton60"></button>{% endif %}
+                {% if butacasOcupadas.69 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton70"></button>{% endif %}
+                {% if butacasOcupadas.79 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton80"></button>{% endif %}
+                {% if butacasOcupadas.89 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton90"></button>{% endif %}
+                {% if butacasOcupadas.99 %}<li class="list-group-item item-chico"></li>{% else %}<button type="button" class="btn btn-secondary item-chico borde-asiento" id="boton100"></button>{% endif %}
+            </ul>
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div>
+            <form name="formButacas" action="/entrada/" method="post"  >{% csrf_token %}
+
+                <input name="butacas" type="hidden" value="[]">
+                <input name="show_id" type="hidden" value="{{show_id}}">
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+    function elementosMatriz() {
+
+        for (let i = 1; i <= 100; i++) {
+            try {
+                document.getElementById(`boton${i}`).addEventListener("click", function () {
+                    manejarInputs(i)
+                });
+            } catch (error) {}
+        }
+
+    }
+
+
+    elementosMatriz();
+
+    arrayButacas = [];
+
+    formularioButacas = document.forms["formButacas"]["butacas"];
+
+
+    function manejarInputs(i) {
+
+        if (!arrayButacas.includes(i)) { // Si no esta lo agrega
+            arrayButacas.push(i);
+            document.getElementById(`boton${i}`).classList.toggle("butaca-seleccionada");
+
+        } else { // Si esta lo elimina
+            arrayButacas.splice(arrayButacas.indexOf(i), 1);
+            document.getElementById(`boton${i}`).classList.toggle("butaca-seleccionada");
+
+        }
+
+
+        let stringButacas = JSON.stringify(arrayButacas);
+        formularioButacas.value = stringButacas;
+        console.log(formularioButacas.value);
+
+    }
+</script>
+
+
+{% endblock %}

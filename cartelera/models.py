@@ -43,6 +43,43 @@ class Database():
         peliculasDiccionario = dict(peliculas)
         return peliculasDiccionario
 
+    def movie_by_id(self, movie_id):
+        sql = "SELECT * FROM peliculas WHERE id_peliculas = %s"
+        self.cursor.execute(sql, (movie_id))
+        movie = self.cursor.fetchone()
+        return movie
+
+    def movie_show_by_id(self, movie_id, dateTime):
+        sql = "SELECT * FROM cartelera.peliculas INNER JOIN funcion ON funcion.peliculas_id_peliculas = peliculas.id_peliculas WHERE id_peliculas = %s AND funcion.horario > %s;"
+        self.cursor.execute(sql, (movie_id, dateTime))
+        movie = self.cursor.fetchall()
+        return movie
+
+    def entradas_by_show_id(self, show_id):
+        sql = "SELECT * FROM cartelera.entrada INNER JOIN funcion ON funcion.id_funcion = entrada.funcion_id_funcion INNER JOIN asientos ON entrada.asiento_id_asiento = asientos.id_asiento WHERE funcion.id_funcion = %s;"
+        self.cursor.execute(sql, (show_id))
+        entradas = self.cursor.fetchall()
+        return entradas
+
+    # def asiento_numero_salas(self, numero_asiento, sala):
+    #     sql = "SELECT * FROM cartelera.asientosINNER JOIN sala ON sala.id_sala=asientos.id_sala WHERE asientos.numero_asiento = %s AND sala.id_sala = %s;"
+    #     self.cursor.execute(sql, (numero_asiento, sala))
+    #     asiento = self.cursor.fetchone()
+    #     return asiento
+
+    def show_by_id(self, show_id):
+        sql = "SELECT * FROM funcion WHERE id_funcion = %s"
+        self.cursor.execute(sql, (show_id))
+        funcion = self.cursor.fetchone()
+        return funcion
+
+    def crearEntrada(self, funcion_id, usuario_id, asiento_id, precio):
+        sql = "INSERT INTO entrada (`funcion_id_funcion`, `usuarios_id_usuarios`, `asiento_id_asiento`, `precio`) VALUES (%s, %s, %s, %s)"
+        self.cursor.execute(sql, (funcion_id, usuario_id, asiento_id, precio))
+        self.connection.commit()
+        print("Se inserto la entrada")
+
+
     def all_rooms(self):
         sql = "SELECT * FROM sala"
         self.cursor.execute(sql)

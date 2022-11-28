@@ -42,8 +42,8 @@ urlpatterns = [
     path('admin/agregar/pelicula/', auth_required_pro, kwargs={'funcion': agregarPelicula, 'auth':'admin' ,'view':'none'}),
     path('admin/agregar/funcion/', auth_required_pro, kwargs={'funcion': agregarFuncion, 'auth':'admin' ,'view':'none'}),
     
-
-
+    path('entrada/', entrada),
+    path('funcion/', elegirFuncion),
 
     
 ]

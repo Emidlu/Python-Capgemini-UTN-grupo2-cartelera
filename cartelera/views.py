@@ -18,13 +18,26 @@ from .aux_shows import *
 
 
 def cartelera(request):
-    if request.method == "POST":
+
+    try:
+        user_id = request.session["user_id"]
+        db=Database()
+        fechaHoraActual = datetime.now()
+        info=db.cartelera(fechaHoraActual)
+        generos=db.all_genres()
+    # print(info)
+        return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Cartelera"})
+    except:
+        db=Database()
+        fechaHoraActual = datetime.now()
+        info=db.cartelera(fechaHoraActual)
+        generos=db.all_genres()
+        # print(info)
+        return render(request, "cartelera.html", {"peliculas": info, "generos":generos, "titulo":"Cartelera"})
+
+
+def compraEntrada(request):
         peliculaId=request.POST.get("peliculaId")
-
-
-        #Convertir a datetime
-        # fechaConcatenada = date + " " + time
-        # fecha_dt = datetime.strptime(fechaConcatenada, '%Y-%m-%d %H:%M:00')
 
         db=Database()
         fechaActual = datetime.now()
@@ -33,16 +46,9 @@ def cartelera(request):
         # print(peliculaShows)
         # print(pelicula)
         
-
         return render(request, "movie-show.html",{ "pelicula":pelicula, "user_id":True, "titulo": "Elegir Función", "shows":peliculaShows})
-    else:
-        db=Database()
-        fechaHoraActual = datetime.now()
-        info=db.cartelera(fechaHoraActual)
-        generos=db.all_genres()
-        # print(info)
 
-        return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Cartelera"})
+
 
 
 def estrenos(request):

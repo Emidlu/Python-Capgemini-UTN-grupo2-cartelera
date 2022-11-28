@@ -25,6 +25,8 @@ urlpatterns = [
     path('', auth_required_pro, kwargs={'funcion': 'none', 'auth':'anybodySimple' ,'view':'home.html'}),
 
     path('cartelera/', auth_required_pro, kwargs={'funcion': cartelera, 'auth':'anybody' ,'view':'none'}),
+    path('compraEntrada/', auth_required_pro, kwargs={'funcion': compraEntrada, 'auth':'admin' ,'view':'none'}),
+
 
 
     path('estrenos/', auth_required_pro, kwargs={'funcion': estrenos, 'auth':'anybody' ,'view':'none'}),

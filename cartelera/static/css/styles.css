@@ -51,6 +51,26 @@
 }
 
 
+.botones-navbar{
+  display: flex;
+  width: 260.2px;
+}
+
+.boton-navbar{
+    margin: 0px 10px;
+}
+
+.contenedor-icono-usuario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono-usuario{
+  color: #ffd564;
+  background-color: transparent;
+  border-color: transparent;
+}
 
 
 
@@ -104,7 +124,7 @@
 .titulo-cartelera-div{
     display: flex;
     justify-content: center;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 30px!important;
 }
 
@@ -348,3 +368,17 @@ background: #eee;
 .panel-administracion-titulo{
   font-family: 'Roboto';font-size: 50px;
 }
+
+
+
+/* USER EDIT PANEL FORM */
+
+.botones-user-edit{
+  display: flex;
+  justify-content: space-between;
+}
+
+.boton-actualizar-user{
+ order: 2;
+}
+

@@ -167,7 +167,39 @@ def register(request):
 
 
 
+def userEdit(request):
+    user_id = request.session["user_id"]
+    db=Database()
+    user=db.user_by_id(user_id)
 
+    print("entro a userEdit")
+
+    if request.method == "POST": #Si entra por POST
+        usuario=request.POST.get("usuario")
+        fecha_nacimiento=request.POST.get("fecha_nacimiento")
+        email=request.POST.get("email")
+        password=request.POST.get("password")
+
+        if password == "":
+            password = user[2]
+
+        db.update_user(usuario, fecha_nacimiento, email, password, user_id)
+        return redirect("/")
+
+    else: #Si entra por GET
+        db=Database()
+        user=db.user_by_id(user_id)
+        fecha_nacimiento = datetime.strftime(user[4], '%Y-%m-%d')
+
+        return render(request, "user-edit.html", {"user_id":True, "user":user, "fecha_nacimiento":fecha_nacimiento})
+        
+
+
+def userDelete(request):
+    user_id = request.session["user_id"]
+    db=Database()
+    db.delete_user(user_id)
+    return redirect("cerrarsesion/")
 
 
 

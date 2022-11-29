@@ -7,11 +7,11 @@
     <div class="bd-navbar">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-            
+
 
             <div class="collapse navbar-collapse" id="navbarColor01">
 
-                <div style="width: 119.45px;" > </div>
+                <div style="width: 260.2px;"> </div>
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -26,13 +26,24 @@
                 </ul>
 
                 {% if user_id %}
-                <form action="/cerrarsesion/" method="post">{% csrf_token %}
-                    <button type="submit" class="btn btn-secondary">Cerrar Sesion</button>
-                </form>
+                <div class="botones-navbar">
+                    <form action="/user/" method="get" class="contenedor-icono-usuario boton-navbar">
+                    <button class="fa-solid fa-user fa-2x icono-usuario" style="color: #ffd564;"></button>
+                    </form>
+                    <form action="/cerrarsesion/" method="post" class="boton-navbar">{% csrf_token %}
+                        <button type="submit" class="btn btn-secondary">Cerrar Sesion</button>
+                    </form>
+                </div>
+
                 {% else %}
-                <form action="/login/" method="get">
-                    <button class="btn btn-primary" type="submit">Iniciar sesion</button>
-                </form>
+                <div class="botones-navbar">
+                    <form action="/register/" method="get" class="boton-navbar">
+                        <button class="btn btn-secondary" type="submit">Registrarse</button>
+                    </form>
+                    <form action="/login/" method="get" class="boton-navbar">
+                        <button class="btn btn-primary" type="submit">Iniciar sesion</button>
+                    </form>
+                </div>
                 {% endif %}
 
 

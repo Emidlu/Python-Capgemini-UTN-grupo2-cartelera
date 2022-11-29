@@ -38,6 +38,8 @@ urlpatterns = [
 # RUTAS DE USUARIO
     path('login/', auth_required_pro, kwargs={'funcion': login, 'auth':'notLogged' ,'view':'none'}),
     path('register/', auth_required_pro, kwargs={'funcion': register, 'auth':'notLogged' ,'view':'none'}),
+    path('user/', auth_required_pro, kwargs={'funcion': userEdit, 'auth':'user' ,'view':'none'}),
+    path('user/delete/', auth_required_pro, kwargs={'funcion': userDelete, 'auth':'user' ,'view':'none'}),
 
     path('cerrarsesion/', cerrarsesion),
 

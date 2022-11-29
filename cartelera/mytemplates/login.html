@@ -19,13 +19,13 @@
               <form   action="/login/" method="post"  >{% csrf_token %}
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="form1Example13" class="form-control form-control-lg" name="email" />
+                  <input type="email" id="form1Example13" class="form-control form-control-lg" name="email" required/>
                   <label class="form-label" for="form1Example13">Email</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form1Example23" class="form-control form-control-lg" name="password" />
+                  <input type="password" id="form1Example23" class="form-control form-control-lg" name="password" required />
                   <label class="form-label" for="form1Example23">Password</label>
                 </div>
 

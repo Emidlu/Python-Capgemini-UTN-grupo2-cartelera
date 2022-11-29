@@ -157,6 +157,23 @@ class Database():
         self.connection.commit()
         print("Se inserto el usuario")
 
+    def user_by_id(self, user_id):
+        sql = "SELECT * FROM usuarios WHERE id_usuarios = %s"
+        self.cursor.execute(sql, (user_id))
+        usuario = self.cursor.fetchone()
+        return usuario
+    
+    def update_user(self, usuario, fecha_nacimiento, email, password, user_id):
+        sql = "UPDATE `cartelera`.`usuarios` SET `email` = %s, `password` = %s, `usuario` = %s, `fecha_nacimiento` = %s WHERE (`id_usuarios` = %s);"
+        self.cursor.execute(sql, (email, password, usuario, fecha_nacimiento,  user_id))
+        self.connection.commit()
+        print("Se edito el usuario")
+
+    def delete_user(self, user_id):
+        sql = "DELETE FROM `cartelera`.`usuarios` WHERE (`id_usuarios` = %s);"
+        self.cursor.execute(sql, (user_id))
+        self.connection.commit()
+        print("Se elimino el usuario")
 
 
 db= Database()

@@ -59,7 +59,7 @@
                         <div>
                             <i class="fa-solid fa-ticket fa-3x"></i>
                         </div>
-                        <form action="/compraEntrada/" method="post"  >{% csrf_token %}
+                        <form action="/funcion/funciones/" method="post"  >{% csrf_token %}
                             <input name="peliculaId" type="hidden" value="{{ pelicula.0}}">
                             <button type="submit" class="btn btn-compra-card ">Comprar</button>
                         </form >

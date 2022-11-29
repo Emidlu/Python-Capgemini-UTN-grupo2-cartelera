@@ -17,48 +17,41 @@ from .aux_shows import *
 #     return render(request, "cartelera.html")
 
 
-def cartelera(request):
+def cartelera(request, user_id):
 
-    try:
-        user_id = request.session["user_id"]
         db=Database()
         fechaHoraActual = datetime.now()
         info=db.cartelera(fechaHoraActual)
         generos=db.all_genres()
-    # print(info)
-        return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Cartelera"})
-    except:
-        db=Database()
-        fechaHoraActual = datetime.now()
-        info=db.cartelera(fechaHoraActual)
-        generos=db.all_genres()
-        # print(info)
-        return render(request, "cartelera.html", {"peliculas": info, "generos":generos, "titulo":"Cartelera"})
+        return render(request, "cartelera.html", {"peliculas": info, "user_id":user_id, "generos":generos, "titulo":"Cartelera"})
 
 
-def compraEntrada(request):
+
+def mostrarFunciones(request):
         peliculaId=request.POST.get("peliculaId")
 
         db=Database()
         fechaActual = datetime.now()
         peliculaShows = db.movie_show_by_id(peliculaId, fechaActual)
         pelicula = db.movie_by_id(peliculaId)
+        generos=db.all_genres()
+
         # print(peliculaShows)
-        # print(pelicula)
+        print(pelicula)
         
-        return render(request, "movie-show.html",{ "pelicula":pelicula, "user_id":True, "titulo": "Elegir Función", "shows":peliculaShows})
+        return render(request, "movie-show.html",{ "pelicula":pelicula, "user_id":True, "titulo": "Elegir Función", "shows":peliculaShows, "generos":generos})
 
 
 
 
-def estrenos(request):
+def estrenos(request, user_id):
     db=Database()
     fechaHoraActual = datetime.now()
     info=db.estrenos(fechaHoraActual)
     generos=db.all_genres()
     print(info)
 
-    return render(request, "cartelera.html", {"peliculas": info, "user_id":True, "generos":generos, "titulo":"Próximos Estrenos"})
+    return render(request, "cartelera.html", {"peliculas": info, "user_id":user_id, "generos":generos, "titulo":"Próximos Estrenos"})
 
 
 def agregarPelicula(request):
@@ -178,7 +171,7 @@ def register(request):
 
 
 
-def elegirFuncion(request):
+def mostrarButacas(request):
     if request.method == "POST":
         db=Database()
         show_id=request.POST.get("show_id")
@@ -186,10 +179,9 @@ def elegirFuncion(request):
         butacasOcupadas = []
         for i in range(100):
             butacasOcupadas.append(False)
-        print(butacasOcupadas)
         for entrada in entradas:
             butacasOcupadas[entrada[3]-1] = True
-        print(butacasOcupadas)
+
 
     return render(request, "compra.html", { "user_id":True, "butacasOcupadas":butacasOcupadas, "show_id":show_id})
 
@@ -272,7 +264,11 @@ def auth_required_pro(request, **kwargs):
 
         case "anybody":
             funcion = kwargs["funcion"]
-            return funcion(request)
+            try:
+                user_id = request.session["user_id"]
+                return funcion(request, True)
+            except:
+                return funcion(request, False)
 
         case "anybodySimple":
             view = kwargs["view"]

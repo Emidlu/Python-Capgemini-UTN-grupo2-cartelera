@@ -24,28 +24,31 @@ urlpatterns = [
     # view solo es requerido si se usa anybodySimple
     path('', auth_required_pro, kwargs={'funcion': 'none', 'auth':'anybodySimple' ,'view':'home.html'}),
 
+
+# PROCESO DE COMPRA
     path('cartelera/', auth_required_pro, kwargs={'funcion': cartelera, 'auth':'anybody' ,'view':'none'}),
-    path('compraEntrada/', auth_required_pro, kwargs={'funcion': compraEntrada, 'auth':'admin' ,'view':'none'}),
-
-
-
     path('estrenos/', auth_required_pro, kwargs={'funcion': estrenos, 'auth':'anybody' ,'view':'none'}),
 
+    path('funcion/funciones/', auth_required_pro, kwargs={'funcion': mostrarFunciones, 'auth':'user' ,'view':'none'}),
+    path('funcion/butacas/', auth_required_pro, kwargs={'funcion': mostrarButacas, 'auth':'user' ,'view':'none'}),
+    path('entradas/', auth_required_pro, kwargs={'funcion': entrada, 'auth':'user' ,'view':'none'}),
+    # path('funcion/butacas/', mostrarButacas),
+    # path('entradas/', entrada),
 
+# RUTAS DE USUARIO
     path('login/', auth_required_pro, kwargs={'funcion': login, 'auth':'notLogged' ,'view':'none'}),
     path('register/', auth_required_pro, kwargs={'funcion': register, 'auth':'notLogged' ,'view':'none'}),
 
-    path('movies/', recibiendoPeliculaNueva),
     path('cerrarsesion/', cerrarsesion),
 
 
-
+# RUTAS DE ADMIN
     path('admin/', auth_required_pro, kwargs={'funcion': adminView, 'auth':'admin' ,'view':'none'}),
     path('admin/agregar/pelicula/', auth_required_pro, kwargs={'funcion': agregarPelicula, 'auth':'admin' ,'view':'none'}),
     path('admin/agregar/funcion/', auth_required_pro, kwargs={'funcion': agregarFuncion, 'auth':'admin' ,'view':'none'}),
+    path('movies/', auth_required_pro, kwargs={'funcion': recibiendoPeliculaNueva, 'auth':'admin' ,'view':'none'}),
+    # path('movies/', recibiendoPeliculaNueva),
     
-    path('entrada/', entrada),
-    path('funcion/', elegirFuncion),
 
     
 ]

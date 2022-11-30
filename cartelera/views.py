@@ -224,22 +224,27 @@ def mostrarButacas(request):
 
 
 def entrada(request):
+    db=Database()
+    user_id = request.session["user_id"]
+    fechaHoraActual = datetime.now()
+
     if request.method == "POST":
-        db=Database()
         butacas=request.POST.get("butacas")
         show_id=request.POST.get("show_id")
         arr = butacas.replace('[', '').replace(']', '').split(',')
         show = db.show_by_id(show_id)
         sala_id = show[2]
-        user_id = request.session["user_id"]
 
         for butaca in arr:
             db.crearEntrada(show_id, user_id, butaca, 600)
 
-        return render(request, "compra.html", { "user_id":True})
+        tickets = db.tickets_by_user(user_id, fechaHoraActual)
+        return render(request, "tickets.html", { "user_id":True, "tickets":tickets})
 
     else:
-        return render(request, "home.html", { "user_id":True})
+        tickets = db.tickets_by_user(user_id, fechaHoraActual)
+        return render(request, "tickets.html", { "user_id":True, "tickets":tickets})
+
 
 
 

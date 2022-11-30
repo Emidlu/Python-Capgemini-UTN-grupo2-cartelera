@@ -1,0 +1,65 @@
+{% extends "base.html"  %}
+
+
+{% block content %}
+
+
+<section>
+    <div>
+        <div class="lista-tickets">
+            {% for ticket in tickets %}
+            <div class="ticket">
+                <div class="ticket--start">
+                    <img src="https://i.ibb.co/W3cK42J/image-1.png" />
+                </div>
+                <div class="ticket--center">
+                    <div class="ticket--center--row">
+                        <div class="ticket--center--col">
+                            <span>tu ticket para </span>
+                            <strong>{{ ticket.4 }}</strong>
+                            
+                        </div>
+                        <div class="ticket--center--col">
+                            <span>A nombre de </span>
+                            <strong>{{ ticket.0 }}</strong>
+                            
+                        </div>
+                    </div>
+                    <div class="ticket--center--row">
+                        <div class="ticket--center--col">
+                            <span class="ticket--info--title">Fecha y hora</span>
+                            <span class="ticket--info--subtitle"> {{ ticket.2|time:"H:i" }} - {{ ticket.2|date:"d/m/Y" }}</span>
+                        </div>
+                        <div class="ticket--center--col">
+                            <span class="ticket--info--title">N° SALA {{ticket.3}}</span>
+                            <span class="ticket--info--subtitle">N° BUTACA {{ticket.7}}</span>
+                        </div>
+                    </div>
+                    <div class="ticket--center--row">
+                        <div class="ticket--center--col">
+                            <span class="ticket--info--title">Genero</span>
+                            <span class="ticket--info--content">{{ticket.6}}</span>
+                        </div>
+                        <div class="ticket--center--col">
+                            <span class="ticket--info--title">Precio</span>
+                            <span class="ticket--info--content">{{ticket.1}}0 $</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket--end">
+                    <div><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Qrcode_wikipedia_fr_v2clean.png">
+                    </div>
+                    <div></div>
+
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

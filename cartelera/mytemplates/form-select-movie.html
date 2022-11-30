@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+{% block content %} 
+
+
+
+<section class="form-movie-section">
+
+    <div class="movie-container-cartelera titulo-cartelera-div">
+        <h1 class="titulo-cartelera">Selección de pelicula</h1>
+    </div>
+
+    <div class="container form-movie-contaigitner">
+        <form class="row g-3" action="/admin/seleccionar/pelicula/" method="post">{% csrf_token %}
+        
+    
+            <div class="col-md-6">
+                <label for="inputState" class="form-label">Pelicula</label>
+                <select id="inputState" class="form-select" name="movieId">
+
+                    {% for k,v in info.items %}
+
+                    
+                    <option value="{{ k }}">{{ v }}</option>
+
+                    {% endfor %}
+					
+
+
+                </select>
+            </div>
+
+
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Seleccionar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

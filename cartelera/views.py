@@ -67,6 +67,24 @@ def agregarPelicula(request):
 
     return render(request, "form-movie.html", {"info":info, "user_id":True})
 
+def seleccionarPelicula (request):
+    
+    if request.method == "POST": #Si entra por POST
+        movieId=request.POST.get("movieId")
+        db = Database()
+        pelicula = db.movie_by_id(movieId)
+        print(pelicula)
+        return render(request, "form-select-movie.html", {"info":info, "user_id":True})
+    else:
+        db=Database()
+        info=db.all_movies()
+
+        return render(request, "form-select-movie.html", {"info":info, "user_id":True})
+
+
+#def editarPelicula(request):
+
+
 
 def agregarFuncion(request):
     if request.method == "POST": #Si entra por POST

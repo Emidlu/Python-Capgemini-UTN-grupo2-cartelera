@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from cartelera.views import *
+from .views import * 
 
 urlpatterns = [
 
@@ -47,5 +47,8 @@ urlpatterns = [
     path('entrada/', entrada),
     path('funcion/', elegirFuncion),
 
+   #path('admin/editar/pelicula', editarPelicula),
+   path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} )
+    
     
 ]

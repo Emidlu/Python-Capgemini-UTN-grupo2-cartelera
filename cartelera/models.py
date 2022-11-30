@@ -49,6 +49,18 @@ class Database():
         movie = self.cursor.fetchone()
         return movie
 
+    def delete_movie (self, movie_id):
+        sql = "DELETE FROM peliculas WHERE id_peliculas = %s ;"
+        self.cursor.execute(sql,(movie_id))
+        self.connection.commit()
+        print("Se elimino la entrada")
+
+    def update_movie (self, id_peliculas, titulo, resenia, duracion, calificacion, idioma, generos_id_generos, imagen_link, fecha_estreno):
+        sql = "UPDATE peliculas SET titulo = %s, resenia = %s, duracion = %s, calificacion = %s, idioma = %s, generos_id_generos = %s, imagen_link = %s, fecha_estreno = %s WHERE id_peliculas = %s ;"
+        self.cursor.execute(sql, (titulo, resenia, duracion, calificacion, idioma, generos_id_generos, imagen_link, fecha_estreno, id_peliculas))
+        self.connection.commit()
+        print("Se edito la pelicula")
+
     def movie_show_by_id(self, movie_id, dateTime):
         sql = "SELECT * FROM cartelera.peliculas INNER JOIN funcion ON funcion.peliculas_id_peliculas = peliculas.id_peliculas WHERE id_peliculas = %s AND funcion.horario > %s;"
         self.cursor.execute(sql, (movie_id, dateTime))

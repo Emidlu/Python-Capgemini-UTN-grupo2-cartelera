@@ -85,6 +85,18 @@ class Database():
         funcion = self.cursor.fetchone()
         return funcion
 
+    def delete_show (self, show_id):
+        sql = "DELETE FROM funcion WHERE id_funcion = %s ;"
+        self.cursor.execute(sql,(show_id))
+        self.connection.commit()
+        print("Se elimino la funcion")
+
+    def update_show (self, id_funcion, horario, sala_id_sala, peliculas_id_peliculas):
+        sql = "UPDATE funcion SET horario = %s, sala_id_sala = %s, peliculas_id_peliculas = %s WHERE id_funcion = %s ;"
+        self.cursor.execute(sql, (horario, sala_id_sala, peliculas_id_peliculas, id_funcion))
+        self.connection.commit()
+        print("Se actualizo la funcion")
+
     def crearEntrada(self, funcion_id, usuario_id, asiento_id, precio):
         sql = "INSERT INTO entrada (`funcion_id_funcion`, `usuarios_id_usuarios`, `asiento_id_asiento`, `precio`) VALUES (%s, %s, %s, %s)"
         self.cursor.execute(sql, (funcion_id, usuario_id, asiento_id, precio))

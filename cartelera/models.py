@@ -85,6 +85,24 @@ class Database():
         funcion = self.cursor.fetchone()
         return funcion
 
+    def show_by_movie_id(self, movie_id):
+        sql = "SELECT * FROM funcion WHERE peliculas_id_peliculas = %s"
+        self.cursor.execute(sql, (movie_id))
+        funcion = self.cursor.fetchall()
+        return funcion
+
+    def delete_entradas_by_show (self, show_id):
+        sql = "DELETE FROM entrada WHERE funcion_id_funcion = %s;"
+        self.cursor.execute(sql, (show_id))
+        self.connection.commit()
+        print("Se eliminaron las entradas de la funcion")
+        
+    def delete_show_by_movie(self, movie_id):
+        sql = "DELETE FROM funcion WHERE peliculas_id_peliculas = %s"
+        self.cursor.execute(sql, (movie_id))
+        self.connection.commit()
+        print("Se eliminaron las funciones de la pelicula")
+        
     def delete_show (self, show_id):
         sql = "DELETE FROM funcion WHERE id_funcion = %s ;"
         self.cursor.execute(sql,(show_id))

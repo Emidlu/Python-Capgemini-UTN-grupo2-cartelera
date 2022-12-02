@@ -6,52 +6,52 @@
 
 
 <section class="form-movie-section">
-    <div class="container form-movie-contaigitner">
-        <form class="row g-3" action="/movies/" method="post">{% csrf_token %}
+    <div class="container form-movie-container">
+        <form class="row g-3" action="/admin/editando/pelicula/" method="post">{% csrf_token %}
             <div class="col-md-6">
+
                 <label for="inputTitulo" class="form-label" >Titulo</label>
-                <input type="text" class="form-control" id="inputEmail4" name="titulo" placeholder="Ejemplo: Harry Potter">
+                <input type="text" class="form-control" id="inputTitulo4" name="titulo" 
+                value="{{info.1}}" required />
             </div>
             <div class="col-md-6">
                 <label for="inputDuracion" class="form-label">Duracion en minutos</label>
-                <input type="number" class="form-control" id="inputDuracion" name="duracion" placeholder="Ejemplo: 120" >
+                <input type="number" class="form-control" id="inputDuracion" name="duracion"
+                value="{{info.3}}" required />
             </div>
-            <!-- <div class="col-12">
-                <label for="inputCalificacion" class="form-label" >Calificacion</label>
-                <input type="text" class="form-control" id="inputAddress" name="calificacion">
-            </div> -->
             <div class="col-12">
                 <label for="inputImagen" class="form-label" >Imagen de portada</label>
                 <input type="text" class="form-control" id="inputAddress2" name="imagenLink"
-                    placeholder="http://imagenes.com.imagen1.jpg/">
+                value="{{info.7}}" required />
             </div>
             <div class="col-md-6">
                 <label for="inputCity" class="form-label">Idioma</label>
                 <select id="inputState" class="form-select" name="idioma">
-                    <option value="0">Español</option>
-                    <option value="1">Subtitulada</option>
+                    <option value="0" {% if info.5 == 0 %} {{ "selected" }} {% endif %}>Español</option>
+                    <option value="1" {% if info.5 == 1 %} {{ "selected" }} {% endif %}>Subtitulada</option>
                 </select>
+
             </div>
             <div class="col-md-6">
                 <label for="inputCity" class="form-label">Clasificación</label>
                 <select id="inputState" class="form-select" name="calificacion">
-                    <option value="ATP">ATP</option>
-                    <option value="ATPR">ATPR</option>
-                    <option value="P-13">P-13</option>
-                    <option value="P-13R">P-13R</option>
-                    <option value="P-16">P-16</option>
-                    <option value="P16R">P16R</option>
-                    <option value="P-18">P-18</option>
+                    <option value="ATP" {% if info.4 == "ATP" %} {{ "selected" }} {% endif %}>ATP</option>
+                    <option value="ATPR" {% if info.4 == "ATPR" %} {{ "selected" }} {% endif %}>ATPR</option>
+                    <option value="P-13" {% if info.4 == "P-13" %} {{ "selected" }} {% endif %}>P-13</option>
+                    <option value="P-13R" {% if info.4 == "P-13R" %} {{ "selected" }} {% endif %}>P-13R</option>
+                    <option value="P-16" {% if info.4 == "P-16" %} {{ "selected" }} {% endif %}>P-16</option>
+                    <option value="P16R" {% if info.4 == "P16R" %} {{ "selected" }} {% endif %}>P16R</option>
+                    <option value="P-18" {% if info.4 == "P-18" %} {{ "selected" }} {% endif %}>P-18</option>
                 </select>
             </div>
             <div class="col-md-6">
                 <label for="inputState" class="form-label">Genero</label>
                 <select id="inputState" class="form-select" name="genero">
 
-                    {% for k,v in info.items %}
+                    {% for k,v in generos.items %}
 
                     
-                    <option value="{{ k }}">{{ v }}</option>
+                    <option value="{{ k }}" {% if k == info.6 %} {{ "selected" }} {% endif %}>{{ v }}</option>
 
                     {% endfor %}
 					
@@ -61,12 +61,17 @@
             </div>
             <div class="col-md-6">
                 <label for="exampleFormControlInput1" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1" name="date" required>
+                <input type="date" class="form-control" id="exampleFormControlInput1" name="date" value="{{fecha_estreno}}" required />
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Reseña</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="resenia"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="resenia">{{info.2}}</textarea>
               </div>
+
+              <div class="">
+                <input type="hidden" class="form-control" id="inputTitulo4" name="movieId" 
+                value="{{info.0}}" required />
+            </div>
               
             <!-- <div class="col-12">
                 <div class="form-check">

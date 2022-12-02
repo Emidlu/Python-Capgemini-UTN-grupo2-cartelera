@@ -52,8 +52,9 @@ urlpatterns = [
     # path('movies/', recibiendoPeliculaNueva),
     
 
-   #path('admin/editar/pelicula', editarPelicula),
-   path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} )
-    
-    
+    path('admin/editar/pelicula/', seleccionarPelicula),
+    path('admin/editando/pelicula/', editandoPelicula),
+    path('admin/eliminar/pelicula/', eliminarPelicula),
+    path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} )
+    #path('editar/pelicula', editarPelicula)
 ]

@@ -66,16 +66,59 @@ def seleccionarPelicula (request):
         movieId=request.POST.get("movieId")
         db = Database()
         pelicula = db.movie_by_id(movieId)
+        genero = db.all_genres()
+        fecha_estreno = datetime.strftime(pelicula[8], '%Y-%m-%d')
         print(pelicula)
-        return render(request, "form-select-movie.html", {"info":info, "user_id":True})
+        return render(request, "form-edit-movie.html", { "info":pelicula, "generos":genero,"fecha_estreno":fecha_estreno, "user_id":True})
     else:
         db=Database()
         info=db.all_movies()
 
-        return render(request, "form-select-movie.html", {"info":info, "user_id":True})
+        rutaForm = "/admin/editar/pelicula/"
+        return render(request, "form-select-movie.html", {"info":info, "rutaForm": rutaForm ,"user_id":True , "boton":["btn-primary", "Seleccionar"]})
 
 
-#def editarPelicula(request):
+def eliminarPelicula(request):
+    db=Database()
+
+    if request.method == "POST": #Si entra por POST
+        movieId=request.POST.get("movieId")
+        shows = db.show_by_movie_id(movieId)
+
+        for show in shows:
+            db.delete_entradas_by_show(show[0])
+        
+        db.delete_show_by_movie(movieId)
+        db.delete_movie(movieId)
+
+        print("Shows: ",shows)
+        return redirect("/admin/")
+    else:
+
+        info=db.all_movies()
+
+        rutaForm = "/admin/eliminar/pelicula/"
+        return render(request, "form-select-movie.html", {"info":info, "rutaForm": rutaForm ,"user_id":True, "boton":["btn-danger", "Eliminar"]})
+
+
+def editandoPelicula(request):
+
+    movieId = request.POST.get("movieId")
+    db=Database()
+
+    if request.method == "POST": #Si entra por POST
+
+        titulo=request.POST.get("titulo")
+        duracion=request.POST.get("duracion")
+        calificacion=request.POST.get("calificacion")
+        imagenLink=request.POST.get("imagenLink")
+        idioma=request.POST.get("idioma")
+        genero=request.POST.get("genero")
+        resenia=request.POST.get("resenia")
+        fechaEstreno=request.POST.get("date")
+        db.update_movie(movieId, titulo, resenia, duracion, calificacion, idioma, genero, imagenLink, fechaEstreno)
+        return redirect("/admin/")
+
 
 
 

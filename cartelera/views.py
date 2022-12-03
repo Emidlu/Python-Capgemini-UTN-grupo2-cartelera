@@ -78,6 +78,13 @@ def seleccionarPelicula (request):
         return render(request, "form-select-movie.html", {"info":info, "rutaForm": rutaForm ,"user_id":True , "boton":["btn-primary", "Seleccionar"]})
 
 
+def seleccionarFuncionMolinete(request):
+    today = datetime.today()
+    db=Database()
+    info=db.show_by_date_movie_title(today)
+    rutaForm = "/admin/molinete/"
+    return render(request, "form-select-movie.html", {"info":info, "rutaForm": rutaForm ,"user_id":True, "boton":["btn-primary", "Seleccionar"]})
+
 def eliminarPelicula(request):
     db=Database()
 

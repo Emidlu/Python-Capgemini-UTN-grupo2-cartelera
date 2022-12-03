@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import * 
+from views import * 
 
 urlpatterns = [
 
@@ -55,6 +55,7 @@ urlpatterns = [
     path('admin/editar/pelicula/', seleccionarPelicula),
     path('admin/editando/pelicula/', editandoPelicula),
     path('admin/eliminar/pelicula/', eliminarPelicula),
-    path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} )
+    path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} ),
+    path('admin/molinete/funciones/',auth_required_pro, kwargs={'funcion': seleccionarFuncionMolinete, 'auth':'admin' ,'view':'none'} ),
     #path('editar/pelicula', editarPelicula)
 ]

@@ -91,6 +91,7 @@ class Database():
         funcion = self.cursor.fetchall()
         return funcion
 
+
     def delete_entradas_by_show (self, show_id):
         sql = "DELETE FROM entrada WHERE funcion_id_funcion = %s;"
         self.cursor.execute(sql, (show_id))
@@ -155,6 +156,19 @@ class Database():
         self.cursor.execute(sql, (horario1, horario2))
         funciones = self.cursor.fetchall()
         return funciones
+
+    def show_by_date_movie_title(self, fecha):
+        horario1 = fecha +' 00:00:00'
+        horario2 = fecha +' 23:59:00'
+        sql="""
+        SELECT id_funcion, horario, titulo FROM cartelera.funcion 
+        INNER JOIN peliculas ON funcion.peliculas_id_peliculas = peliculas.id_peliculas
+        WHERE horario >= %s
+        AND horario <= %s;"""
+        self.cursor.execute(sql, (horario1, horario2))
+        funciones = self.cursor.fetchall()
+        return funciones
+
 
     def search_show_by_date_and_hour(self, fecha, hora):
         horario1 = fecha +' '+ hora

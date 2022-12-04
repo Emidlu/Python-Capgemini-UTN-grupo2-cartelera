@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from views import * 
+from .views import * 
+from .molinete import contarEspectadores
 
 urlpatterns = [
 
@@ -49,13 +50,13 @@ urlpatterns = [
     path('admin/agregar/pelicula/', auth_required_pro, kwargs={'funcion': agregarPelicula, 'auth':'admin' ,'view':'none'}),
     path('admin/agregar/funcion/', auth_required_pro, kwargs={'funcion': agregarFuncion, 'auth':'admin' ,'view':'none'}),
     path('movies/', auth_required_pro, kwargs={'funcion': recibiendoPeliculaNueva, 'auth':'admin' ,'view':'none'}),
-    # path('movies/', recibiendoPeliculaNueva),
+    path('admin/molinete/', auth_required_pro, kwargs={'funcion': seleccionarFuncionMolinete, 'auth':'admin' ,'view':'none'}),
+    path('admin/molinete/contar/', auth_required_pro, kwargs={'funcion': contarEspectadores, 'auth':'admin' ,'view':'none'}),
     
 
     path('admin/editar/pelicula/', seleccionarPelicula),
     path('admin/editando/pelicula/', editandoPelicula),
     path('admin/eliminar/pelicula/', eliminarPelicula),
     path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} ),
-    path('admin/molinete/funciones/',auth_required_pro, kwargs={'funcion': seleccionarFuncionMolinete, 'auth':'admin' ,'view':'none'} ),
     #path('editar/pelicula', editarPelicula)
 ]

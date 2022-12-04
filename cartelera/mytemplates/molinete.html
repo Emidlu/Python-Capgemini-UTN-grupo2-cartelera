@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block content %} 
+
+
+
+<section class="form-movie-section">
+
+    <div class="movie-container-cartelera titulo-cartelera-div">
+        <h2 class="titulo-cartelera">Molinete de función</h2>
+    </div>
+
+    <div class=" titulo-cartelera-div" style="margin-bottom: 50px;">
+        <h1> Cantidad de entradas: {{ cantidad_entradas }}</h1>
+    </div>
+
+
+    <div class=" titulo-cartelera-div {{msg}}" style="margin-bottom: 50px;">
+        <p class="display-1"> Ingresaron todos los espectadores :D </p>
+    </div>
+
+    <div class="container form-movie-contaigitner" style="margin-bottom: 200px;">
+
+        <div class="container form-movie-contaigitner d-flex justify-content-center {{formClass}} ">
+            <form action="/admin/molinete/contar/" method="post"  >{% csrf_token %}
+                <input name="cantidad_entradas" type="hidden" value="{{ cantidad_entradas }}">
+                <button type="submit" class="btn btn-compra-card ">Empezar a contar</button>
+            </form >
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Database
 from datetime import date, time, datetime, timedelta
 from .aux_shows import *
+from .molinete import *
 
 # def home(request):
 #     try:
@@ -79,11 +80,22 @@ def seleccionarPelicula (request):
 
 
 def seleccionarFuncionMolinete(request):
-    today = datetime.today()
     db=Database()
-    info=db.show_by_date_movie_title(today)
-    rutaForm = "/admin/molinete/"
-    return render(request, "form-select-movie.html", {"info":info, "rutaForm": rutaForm ,"user_id":True, "boton":["btn-primary", "Seleccionar"]})
+    if request.method == "POST": #Si entra por POST
+        showId=request.POST.get("showId")
+        entradas = db.entradas_by_show_id(showId)
+        cantidad_entradas = len(entradas)
+        print(cantidad_entradas)
+        return render(request, "molinete.html", {"cantidad_entradas":cantidad_entradas, "user_id":True, "formClass":"","msg":"d-none"})
+    else:
+        today = date.today()
+        db=Database()
+        print(today)
+        info=db.show_by_date_movie_title(str(today))
+        print(info)
+        rutaForm = "/admin/molinete/"
+        return render(request, "form-select-show-molinete.html", {"info":info, "rutaForm": rutaForm ,"user_id":True, "boton":["btn-primary", "Seleccionar"]})
+
 
 def eliminarPelicula(request):
     db=Database()

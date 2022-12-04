@@ -5,6 +5,9 @@ from .models import Database
 from datetime import date, time, datetime, timedelta
 from .aux_shows import *
 from .molinete import *
+from .manageJson import agregarElementoJson, agregarIterableJson
+import json
+
 
 # def home(request):
 #     try:
@@ -104,13 +107,18 @@ def eliminarPelicula(request):
         movieId=request.POST.get("movieId")
         shows = db.show_by_movie_id(movieId)
 
+        agregarIterableJson('funciones', shows)
+        agregarElementoJson('peliculas', str(db.movie_by_id(movieId)))
+        agregarIterableJson('entradas', db.entradas_by_show_id(movieId))
+
         for show in shows:
             db.delete_entradas_by_show(show[0])
         
         db.delete_show_by_movie(movieId)
         db.delete_movie(movieId)
 
-        print("Shows: ",shows)
+
+
         return redirect("/admin/")
     else:
 

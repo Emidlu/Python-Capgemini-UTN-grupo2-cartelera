@@ -347,7 +347,7 @@ def userDelete(request):
     user_id = request.session["user_id"]
     db=Database()
     db.delete_user(user_id)
-    return redirect("cerrarsesion/")
+    return redirect("/cerrarsesion/")
 
 
 

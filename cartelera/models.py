@@ -141,7 +141,7 @@ class Database():
         print("Se inserto la entrada")
 
     def tickets_by_user(self, user_id, fechaHoraActual):
-        sql = 'SELECT usuarios.usuario, entrada.precio, funcion.horario, sala_id_sala, peliculas.titulo, peliculas.idioma, generos.nombre, asientos.numero_asiento, entrada.id_entrada FROM cartelera.entrada INNER JOIN usuarios ON entrada.usuarios_id_usuarios = usuarios.id_usuarios INNER JOIN funcion ON funcion.id_funcion = entrada.funcion_id_funcion INNER JOIN peliculas ON peliculas.id_peliculas = funcion.peliculas_id_peliculas INNER JOIN generos ON generos.id_generos = peliculas.generos_id_generos INNER JOIN asientos ON entrada.asiento_id_asiento = asientos.id_asiento INNER JOIN sala ON asientos.id_sala = sala.id_sala WHERE usuarios.id_usuarios = %s AND horario >= %s ORDER BY horario, id_entrada DESC;'
+        sql = 'SELECT usuarios.usuario, entrada.precio, funcion.horario, sala_id_sala, peliculas.titulo, peliculas.idioma, generos.nombre, asientos.numero_asiento, entrada.id_entrada, funcion.precio_por_entrada FROM cartelera.entrada INNER JOIN usuarios ON entrada.usuarios_id_usuarios = usuarios.id_usuarios INNER JOIN funcion ON funcion.id_funcion = entrada.funcion_id_funcion INNER JOIN peliculas ON peliculas.id_peliculas = funcion.peliculas_id_peliculas INNER JOIN generos ON generos.id_generos = peliculas.generos_id_generos INNER JOIN asientos ON entrada.asiento_id_asiento = asientos.id_asiento INNER JOIN sala ON asientos.id_sala = sala.id_sala WHERE usuarios.id_usuarios = %s AND horario >= %s ORDER BY horario, id_entrada DESC;'
         self.cursor.execute(sql, (user_id, fechaHoraActual))
         entradas = self.cursor.fetchall()
         return entradas

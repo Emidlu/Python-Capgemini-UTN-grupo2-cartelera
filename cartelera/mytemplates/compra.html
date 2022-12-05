@@ -206,15 +206,20 @@
         </div>
 
         <div>
-            <form name="formButacas" action="/entradas/" method="post" style="margin: 35px;" >{% csrf_token %}
-
-                <input name="butacas" type="hidden" value="[]">
-                <input name="show_id" type="hidden" value="{{show_id}}">
-
+            <div>
+                <form name="formButacas" action="/entradas/" method="post" style="margin: 35px;" class="formCompraEntradas" >{% csrf_token %}
+                    
+                    <input name="butacas" type="hidden" value="[]">
+                    <input name="show_id" type="hidden" value="{{show_id}}">
+                    <p class="d-none" id="precio_por_entrada"> {{precio}} </p>
+                    <strong id="precio_total">0 $</strong>
+                
+                
 
                 <button type="submit" class="btn btn-primary">Comprar</button>
             </form>
         </div>
+    </div>
 
     </div>
 
@@ -222,6 +227,9 @@
 
 
 <script>
+    
+
+
     function elementosMatriz() {
 
         for (let i = 1; i <= 100; i++) {
@@ -234,6 +242,8 @@
 
     }
 
+    precioEntrada = ( JSON.parse(document.querySelector("#precio_por_entrada").outerText))
+    precioTotal = document.querySelector("#precio_total")
 
     elementosMatriz();
 
@@ -259,7 +269,14 @@
         formularioButacas.value = stringButacas;
         console.log(formularioButacas.value);
 
+
+
+        console.log(arrayButacas.length)
+        precioTotal.innerHTML = (precioEntrada * arrayButacas.length).toString() + ' $'
+
+
     }
+
 </script>
 
 

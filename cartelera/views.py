@@ -355,6 +355,7 @@ def mostrarButacas(request):
     if request.method == "POST":
         db=Database()
         show_id=request.POST.get("show_id")
+        show=db.show_by_id(show_id)
         entradas = db.entradas_by_show_id(show_id)
         butacasOcupadas = []
         for i in range(100):
@@ -363,7 +364,7 @@ def mostrarButacas(request):
             butacasOcupadas[entrada[3]-1] = True
 
 
-    return render(request, "compra.html", { "user_id":True, "butacasOcupadas":butacasOcupadas, "show_id":show_id})
+    return render(request, "compra.html", { "user_id":True, "butacasOcupadas":butacasOcupadas, "show_id":show_id, "precio":show[4]})
 
 
 
@@ -381,10 +382,10 @@ def entrada(request):
         show_id=request.POST.get("show_id")
         arr = butacas.replace('[', '').replace(']', '').split(',')
         show = db.show_by_id(show_id)
-        sala_id = show[2]
+        precio = show[4]
 
         for butaca in arr:
-            db.crearEntrada(show_id, user_id, butaca, 600)
+            db.crearEntrada(show_id, user_id, butaca, precio)
 
         tickets = db.tickets_by_user(user_id, fechaHoraActual)
         return render(request, "tickets.html", { "user_id":True, "tickets":tickets})

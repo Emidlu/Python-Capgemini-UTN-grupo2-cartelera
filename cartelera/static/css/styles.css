@@ -314,6 +314,18 @@ background: #eee;
 }
 
 
+
+/* VENTA DE ENTRADAS */
+
+.formCompraEntradas{
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 366.61px;
+
+}
+
 /* PANEL ADMIN */
 .admin-menu-item{
   margin: 5px 0px;
@@ -592,3 +604,5 @@ background: #eee;
   justify-content: flex-start;  
   align-items: end;
 }
+
+

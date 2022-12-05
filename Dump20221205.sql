@@ -64,7 +64,7 @@ CREATE TABLE `entrada` (
   CONSTRAINT `fk_entrada_asiento1` FOREIGN KEY (`asiento_id_asiento`) REFERENCES `asientos` (`id_asiento`),
   CONSTRAINT `fk_entrada_funcion1` FOREIGN KEY (`funcion_id_funcion`) REFERENCES `funcion` (`id_funcion`),
   CONSTRAINT `fk_entrada_usuarios1` FOREIGN KEY (`usuarios_id_usuarios`) REFERENCES `usuarios` (`id_usuarios`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,6 +73,7 @@ CREATE TABLE `entrada` (
 
 LOCK TABLES `entrada` WRITE;
 /*!40000 ALTER TABLE `entrada` DISABLE KEYS */;
+INSERT INTO `entrada` VALUES (46,12,6,100,600),(47,12,6,70,600);
 /*!40000 ALTER TABLE `entrada` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,12 +89,13 @@ CREATE TABLE `funcion` (
   `horario` datetime NOT NULL,
   `sala_id_sala` int NOT NULL,
   `peliculas_id_peliculas` int NOT NULL,
+  `precio_por_entrada` double NOT NULL,
   PRIMARY KEY (`id_funcion`),
   KEY `fk_entrada_sala_idx` (`sala_id_sala`),
   KEY `fk_entrada_peliculas1_idx` (`peliculas_id_peliculas`),
   CONSTRAINT `fk_entrada_peliculas1` FOREIGN KEY (`peliculas_id_peliculas`) REFERENCES `peliculas` (`id_peliculas`),
   CONSTRAINT `fk_entrada_sala` FOREIGN KEY (`sala_id_sala`) REFERENCES `sala` (`id_sala`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +104,7 @@ CREATE TABLE `funcion` (
 
 LOCK TABLES `funcion` WRITE;
 /*!40000 ALTER TABLE `funcion` DISABLE KEYS */;
-INSERT INTO `funcion` VALUES (1,'2022-11-24 21:00:00',3,4),(2,'2022-11-24 10:00:00',1,3),(3,'2022-11-25 14:00:00',2,3),(4,'2022-12-04 21:00:00',3,5),(5,'2022-12-02 10:00:00',1,6),(6,'2022-11-28 14:00:00',3,3),(7,'2022-11-30 10:00:00',3,3),(8,'2022-11-30 21:00:00',3,7);
+INSERT INTO `funcion` VALUES (1,'2022-11-24 21:00:00',3,4,0),(8,'2022-11-30 21:00:00',3,7,0),(12,'2022-12-09 10:00:00',2,8,0);
 /*!40000 ALTER TABLE `funcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +152,7 @@ CREATE TABLE `peliculas` (
   PRIMARY KEY (`id_peliculas`),
   KEY `fk_peliculas_generos1_idx` (`generos_id_generos`),
   CONSTRAINT `fk_peliculas_generos1` FOREIGN KEY (`generos_id_generos`) REFERENCES `generos` (`id_generos`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +161,7 @@ CREATE TABLE `peliculas` (
 
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
-INSERT INTO `peliculas` VALUES (3,'Harry Potter','Buena pelicula',120,'calificacion',0,1,'https://images-na.ssl-images-amazon.com/images/S/pv-target-images/6ff78b522f917f7ef331f466bd31b8d6156dec31740d84e98cb1846b9b049e28._RI_V_TTW_.jpg','0000-00-00'),(4,'Avatar 2','esta es una pelicula de aliens y no se q',240,'pegi 13',1,4,'https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg','0000-00-00'),(5,'asdasd','asad',210,'P-13',0,1,'https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg','0000-00-00'),(6,'asdasd','asad',210,'P-13',0,1,'https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg','0000-00-00'),(7,'Terminator','Película de un robot asesino',250,'P-16',1,2,'https://pics.filmaffinity.com/Terminator-741269996-large.jpg','2022-11-26');
+INSERT INTO `peliculas` VALUES (4,'Avatar 2','esta es una pelicula de aliens y no se q',240,'pegi 13',1,4,'https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg','0000-00-00'),(7,'Terminator','Película de un robot asesino',250,'P-16',1,2,'https://pics.filmaffinity.com/Terminator-741269996-large.jpg','2022-11-26'),(8,'IT','Una película de un payaso asesino',135,'P-18',0,4,'https://peliomanta.com/wp-content/uploads/2019/08/Peli-o-Manta.-IT-Chapter-1.-Posterr-691x1024.jpg','2022-12-07'),(9,'IT 2','Película de un payaso asesino 2',235,'P-18',0,4,'https://1.bp.blogspot.com/-NomCJZn4r5c/XXd4WGJDyEI/AAAAAAAAB2M/BPSlASEPYgofO3JSaeHk_Aq9hVv9-ODjACLcBGAs/s1600/It%2BChapter%2BTwo%2BPoster.jpg','2022-12-10');
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +204,7 @@ CREATE TABLE `usuarios` (
   `fecha_nacimiento` datetime NOT NULL,
   `admin` tinyint NOT NULL,
   PRIMARY KEY (`id_usuarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,7 +213,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'usuario@usuario.com','1234','usuario1','2022-11-22 00:00:00',1),(2,'usuario2@usuario.com','1234','usuario2','1998-11-22 00:00:00',0);
+INSERT INTO `usuarios` VALUES (1,'usuario@usuario.com','1234','usuario1','2022-11-22 00:00:00',1),(2,'usuario2@usuario.com','1234','usuario2','1998-11-22 00:00:00',0),(3,'usuarioRegistrado1@gmail.com','1234','usuarioRegistrado1','2016-02-26 00:00:00',0),(6,'usuarioRegistrado2@gmail.com','1234','usuarioRegistrado2','2017-08-02 00:00:00',0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -224,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-25 19:18:57
+-- Dump completed on 2022-12-05 13:25:33

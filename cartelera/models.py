@@ -128,9 +128,9 @@ class Database():
         self.connection.commit()
         print("Se elimino la funcion")
 
-    def update_show (self, id_funcion, horario, sala_id_sala, peliculas_id_peliculas):
-        sql = "UPDATE funcion SET horario = %s, sala_id_sala = %s, peliculas_id_peliculas = %s WHERE id_funcion = %s ;"
-        self.cursor.execute(sql, (horario, sala_id_sala, peliculas_id_peliculas, id_funcion))
+    def update_show (self, id_funcion, horario, sala_id_sala, peliculas_id_peliculas, precio):
+        sql = "UPDATE funcion SET horario = %s, sala_id_sala = %s, peliculas_id_peliculas = %s, precio_por_entrada = %s WHERE id_funcion = %s ;"
+        self.cursor.execute(sql, (horario, sala_id_sala, peliculas_id_peliculas, precio ,id_funcion))
         self.connection.commit()
         print("Se actualizo la funcion")
 
@@ -154,9 +154,9 @@ class Database():
         salasDiccionario = dict(salas)
         return salasDiccionario
 
-    def insert_show(self, peliculaId, sala, fechaHora):
-        sql = "INSERT INTO funcion (peliculas_id_peliculas, sala_id_sala, horario) VALUES (%s, %s, %s)"
-        self.cursor.execute(sql, (peliculaId, sala, fechaHora))
+    def insert_show(self, peliculaId, sala, fechaHora, precio):
+        sql = "INSERT INTO funcion (peliculas_id_peliculas, sala_id_sala, horario, precio_por_entrada) VALUES (%s, %s, %s, %s)"
+        self.cursor.execute(sql, (peliculaId, sala, fechaHora, precio))
         self.connection.commit()
         print("Se inserto la funcion")
 

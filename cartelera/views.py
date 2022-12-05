@@ -155,13 +155,14 @@ def agregarFuncion(request):
         salaId=request.POST.get("salaId")
         date=request.POST.get("date")
         time=request.POST.get("time")
+        precio=request.POST.get("precio")
 
         #Convertir a datetime
         fechaConcatenada = date + " " + time
         fecha_dt = datetime.strptime(fechaConcatenada, '%Y-%m-%d %H:%M:00')
 
         db=Database()
-        db.insert_show(peliculaId, salaId, fecha_dt)
+        db.insert_show(peliculaId, salaId, fecha_dt, precio)
 
         #Hacer que redireccione a la pagina de panel de administrador
         movies=db.all_movies()
@@ -226,13 +227,14 @@ def editandoFuncion (request):
         salaId=request.POST.get("salaId")
         date=request.POST.get("date")
         time=request.POST.get("time")
+        precio=request.POST.get("precio")
 
         #Convertir a datetime
         fechaConcatenada = date + " " + time
         fecha_dt = datetime.strptime(fechaConcatenada, '%Y-%m-%d %H:%M:00')
 
         db=Database()
-        db.update_show(showId, fecha_dt, salaId, peliculaId)
+        db.update_show(showId, fecha_dt, salaId, peliculaId, precio)
     
         return redirect("/admin/")
 

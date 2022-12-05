@@ -585,3 +585,10 @@ background: #eee;
 }
 
 
+/* FORM FUNCION */
+
+.boton-enviar-funcion-form{
+  display: flex; 
+  justify-content: flex-start;  
+  align-items: end;
+}

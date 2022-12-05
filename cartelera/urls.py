@@ -57,8 +57,8 @@ urlpatterns = [
     path('admin/editar/pelicula/', auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} ),
     path('admin/editando/pelicula/', auth_required_pro, kwargs={'funcion': editandoPelicula, 'auth':'admin' ,'view':'none'} ),
     path('admin/eliminar/pelicula/', auth_required_pro, kwargs={'funcion': eliminarPelicula, 'auth':'admin' ,'view':'none'} ),
-    #path('admin/editar/funcion/', editarFuncion),
-    path('admin/eliminar/funcion/', eliminarFuncion),
-    path('admin/editar/funcion/', seleccionarFuncion),
-    path('admin/editando/funcion/', editandoFuncion)
+    path('admin/eliminar/funcion/', auth_required_pro, kwargs={'funcion': eliminarFuncion, 'auth':'admin' ,'view':'none'} ),
+    path('admin/editar/funcion/', auth_required_pro, kwargs={'funcion': seleccionarFuncion, 'auth':'admin' ,'view':'none'} ),
+    path('admin/editando/funcion/', auth_required_pro, kwargs={'funcion': editandoFuncion, 'auth':'admin' ,'view':'none'} ),
+
 ]

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+{% block content %} 
+
+
+
+<section class="form-movie-section">
+
+    <div class="movie-container-cartelera titulo-cartelera-div">
+        <h1 class="titulo-cartelera">Selección de función</h1>
+    </div>
+
+    <div class="container form-movie-contaigitner">
+        <form class="row g-3" action="{{rutaForm}}" method="post">{% csrf_token %}
+        
+    
+            <div class="col-md-6">
+                <label for="inputState" class="form-label">Función</label>
+                <select id="inputState" class="form-select" name="showId">
+
+                    {% for k in info %}
+
+                    
+                    <option value="{{ k.0 }}">{{ k.2 }} {{ k.1 }}</option>
+
+                    {% endfor %}
+					
+
+
+                </select>
+            </div>
+
+
+
+            <div class="col-12">
+                <button type="submit" class="btn {{boton.0}}">{{boton.1}}</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

@@ -43,6 +43,12 @@ class Database():
         peliculasDiccionario = dict(peliculas)
         return peliculasDiccionario
 
+    def all_shows(self):
+        sql = "SELECT id_funcion, horario, titulo FROM cartelera.funcion INNER JOIN peliculas ON funcion.peliculas_id_peliculas = peliculas.id_peliculas;"
+        self.cursor.execute(sql)
+        funciones = self.cursor.fetchall()
+        return funciones
+
     def movie_by_id(self, movie_id):
         sql = "SELECT * FROM peliculas WHERE id_peliculas = %s"
         self.cursor.execute(sql, (movie_id))
@@ -84,6 +90,12 @@ class Database():
         self.cursor.execute(sql, (show_id))
         funcion = self.cursor.fetchone()
         return funcion
+
+    # def movie_by_show_id (self, show_id):
+    #     sql = "SELECT peliculas_id_peliculas FROM funcion WHERE id_funcion = %s ;"
+    #     self.cursor.execute(sql,(show_id))
+    #     pelicula = self.cursor.fetchone()
+    #     return pelicula
 
     def show_by_movie_id(self, movie_id):
         sql = "SELECT * FROM funcion WHERE peliculas_id_peliculas = %s"

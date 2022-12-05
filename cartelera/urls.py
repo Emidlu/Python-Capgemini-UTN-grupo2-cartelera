@@ -51,10 +51,12 @@ urlpatterns = [
     path('movies/', auth_required_pro, kwargs={'funcion': recibiendoPeliculaNueva, 'auth':'admin' ,'view':'none'}),
     # path('movies/', recibiendoPeliculaNueva),
     
-
-    path('admin/editar/pelicula/', seleccionarPelicula),
-    path('admin/editando/pelicula/', editandoPelicula),
-    path('admin/eliminar/pelicula/', eliminarPelicula),
-    path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} )
-    #path('editar/pelicula', editarPelicula)
+    path('admin/seleccionar/pelicula/',auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} ),
+    path('admin/editar/pelicula/', auth_required_pro, kwargs={'funcion': seleccionarPelicula, 'auth':'admin' ,'view':'none'} ),
+    path('admin/editando/pelicula/', auth_required_pro, kwargs={'funcion': editandoPelicula, 'auth':'admin' ,'view':'none'} ),
+    path('admin/eliminar/pelicula/', auth_required_pro, kwargs={'funcion': eliminarPelicula, 'auth':'admin' ,'view':'none'} ),
+    #path('admin/editar/funcion/', editarFuncion),
+    path('admin/eliminar/funcion/', eliminarFuncion),
+    path('admin/editar/funcion/', seleccionarFuncion),
+    path('admin/editando/funcion/', editandoFuncion)
 ]

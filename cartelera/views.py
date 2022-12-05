@@ -165,8 +165,63 @@ def agregarFuncion(request):
 
         return render(request, "form-show.html", {"movies":movies, "rooms":rooms, "user_id":True, "matrizSemana1":matrizSemana1, "matrizSemana2":matrizSemana2, "dias":dias })
 
+def seleccionarFuncion (request):
+    if request.method == "POST": #Si entra por POST
+        showId=request.POST.get("showId")
+        db = Database()
+        funcion = db.show_by_id(showId)
+        #peliculaId = db.movie_by_show_id(showId)
+        #pelicula = db.movie_by_id(peliculaId)
+        fecha = datetime.strftime(funcion[1], '%Y-%m-%d')
+        hora = datetime.strftime(funcion[1], '%H:%M:%S')
+        movies=db.all_movies()
+        rooms=db.all_rooms()
 
+        fechaHoraActual = datetime.now()
 
+        lunesAnterior = primerLunesAnterior(fechaHoraActual)
+        lunesSiguiente = lunesAnterior + timedelta(days=7)
+        matrizSemana1 = matriz_shows_semana(lunesAnterior)
+        matrizSemana2 = matriz_shows_semana(lunesSiguiente)
+        dias = proximosDias(lunesAnterior, 14)
+
+        return render(request, "form-edit-show.html", {"funcion":funcion, "fecha":fecha, "hora":hora, "movies":movies, "rooms":rooms, "user_id":True, "matrizSemana1":matrizSemana1, "matrizSemana2":matrizSemana2, "dias":dias })
+    else:
+        db=Database()
+        info=db.all_shows()
+        rutaForm = "/admin/editar/funcion/"
+        return render(request, "form-select-show.html", {"info":info, "rutaForm": rutaForm ,"user_id":True , "boton":["btn-primary", "Seleccionar"]})
+
+def editandoFuncion (request):
+    if request.method == "POST": #Si entra por POST
+        peliculaId=request.POST.get("peliculaId")
+        showId=request.POST.get("showId")
+        salaId=request.POST.get("salaId")
+        date=request.POST.get("date")
+        time=request.POST.get("time")
+
+        #Convertir a datetime
+        fechaConcatenada = date + " " + time
+        fecha_dt = datetime.strptime(fechaConcatenada, '%Y-%m-%d %H:%M:00')
+
+        db=Database()
+        db.update_show(showId, fecha_dt, salaId, peliculaId)
+    
+        return redirect("/admin/")
+
+def eliminarFuncion (request):
+    if request.method == "POST": #Si entra por POST
+        showId=request.POST.get("showId")
+        db = Database()
+        db.delete_entradas_by_show(showId)
+        db.delete_show(showId)
+        return redirect("/admin/")
+
+    else:
+        db = Database()
+        info=db.all_shows()
+        rutaForm = "/admin/eliminar/funcion/"
+        return render(request, "form-select-show.html", {"info":info, "rutaForm": rutaForm ,"user_id":True, "boton":["btn-danger", "Eliminar"]})
 
 def recibiendoPeliculaNueva(request):
     # if request.method == "POST":   anidar?

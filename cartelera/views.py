@@ -109,7 +109,7 @@ def eliminarPelicula(request):
 
         agregarIterableJson('funciones', shows)
         agregarElementoJson('peliculas', str(db.movie_by_id(movieId)))
-        agregarIterableJson('entradas', db.entradas_by_show_id(movieId))
+        agregarIterableJson('entradas', db.entradas_by_movie_id(movieId))
 
         for show in shows:
             db.delete_entradas_by_show(show[0])
@@ -237,15 +237,18 @@ def editandoFuncion (request):
         return redirect("/admin/")
 
 def eliminarFuncion (request):
+    db = Database()
     if request.method == "POST": #Si entra por POST
         showId=request.POST.get("showId")
-        db = Database()
+
+        agregarElementoJson('funciones', str(db.show_by_id(showId)))
+        agregarIterableJson('entradas', db.entradas_by_show_id(showId))
+
         db.delete_entradas_by_show(showId)
         db.delete_show(showId)
         return redirect("/admin/")
 
     else:
-        db = Database()
         info=db.all_shows()
         rutaForm = "/admin/eliminar/funcion/"
         return render(request, "form-select-show.html", {"info":info, "rutaForm": rutaForm ,"user_id":True, "boton":["btn-danger", "Eliminar"]})

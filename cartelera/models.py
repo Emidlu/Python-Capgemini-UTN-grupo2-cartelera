@@ -79,6 +79,12 @@ class Database():
         entradas = self.cursor.fetchall()
         return entradas
 
+    def entradas_by_movie_id(self, movie_id):
+        sql = "SELECT * FROM cartelera.entrada INNER JOIN funcion ON funcion.id_funcion = entrada.funcion_id_funcion INNER JOIN asientos ON entrada.asiento_id_asiento = asientos.id_asiento INNER JOIN peliculas ON funcion.peliculas_id_peliculas = peliculas.id_peliculas WHERE peliculas.id_peliculas = %s;"
+        self.cursor.execute(sql, (movie_id))
+        entradas = self.cursor.fetchall()
+        return entradas
+
     # def asiento_numero_salas(self, numero_asiento, sala):
     #     sql = "SELECT * FROM cartelera.asientosINNER JOIN sala ON sala.id_sala=asientos.id_sala WHERE asientos.numero_asiento = %s AND sala.id_sala = %s;"
     #     self.cursor.execute(sql, (numero_asiento, sala))
